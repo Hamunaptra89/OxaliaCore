@@ -3,6 +3,7 @@ package fr.hamunaptra_.oxaliacore.addon.announce;
 import fr.hamunaptra_.oxaliacore.Main;
 import fr.hamunaptra_.oxaliacore.utils.ConfigManager;
 import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

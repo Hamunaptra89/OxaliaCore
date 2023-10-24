@@ -1,8 +1,10 @@
 package fr.hamunaptra_.oxaliacore.utils.api.placeholders;
 
-import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.Main;
+import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
 import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
+import fr.hamunaptra_.oxaliacore.utils.api.data.*;
+
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import org.bukkit.entity.Player;
 
@@ -20,7 +22,7 @@ public class PlaceHolderAPI extends PlaceholderExpansion {
 
     @Override
     public String getVersion() {
-        return "0.0.3-BETA";
+        return Main.getInstance().getDescription().getVersion();
     }
 
     @Override

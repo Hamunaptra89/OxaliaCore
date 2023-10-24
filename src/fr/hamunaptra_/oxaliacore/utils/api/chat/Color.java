@@ -1,7 +1,8 @@
 package fr.hamunaptra_.oxaliacore.utils.api.chat;
 
-import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
-import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
+import fr.hamunaptra_.oxaliacore.utils.api.config.*;
+import fr.hamunaptra_.oxaliacore.utils.api.data.*;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 

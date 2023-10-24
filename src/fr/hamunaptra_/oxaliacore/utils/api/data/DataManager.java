@@ -1,7 +1,8 @@
 package fr.hamunaptra_.oxaliacore.utils.api.data;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
+import fr.hamunaptra_.oxaliacore.utils.api.config.*;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;

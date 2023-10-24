@@ -1,9 +1,7 @@
 package fr.hamunaptra_.oxaliacore.addon.chatclear;
 
 import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.command.*;
 import org.bukkit.entity.Player;
 
 public class ChatClearCommand implements CommandExecutor {

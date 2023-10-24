@@ -26,7 +26,7 @@ public class ItemListener implements Listener{
         Color Color = new Color(p);
 
         ItemStack i = e.getItem();
-        String getName = i.getType().getData().getName();
+        String getName = i.getItemMeta().getDisplayName();
 
         if (CItems.getBoolean(key + "Consume")) {
             if (getName.equals(Color.set(CItems.getString(key + "Potato.Name")))) {

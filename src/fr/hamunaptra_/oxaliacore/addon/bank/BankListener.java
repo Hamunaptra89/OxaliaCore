@@ -1,9 +1,9 @@
 package fr.hamunaptra_.oxaliacore.addon.bank;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
-import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
-import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
+import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.api.config.*;
+import fr.hamunaptra_.oxaliacore.utils.api.data.*;
 
 import net.milkbowl.vault.economy.EconomyResponse;
 

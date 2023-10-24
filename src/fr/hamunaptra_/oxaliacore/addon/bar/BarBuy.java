@@ -2,7 +2,7 @@ package fr.hamunaptra_.oxaliacore.addon.bar;
 
 import fr.hamunaptra_.oxaliacore.Main;
 import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.api.config.*;
 import fr.hamunaptra_.oxaliacore.utils.api.items.*;
 
 import net.milkbowl.vault.economy.EconomyResponse;

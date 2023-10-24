@@ -1,13 +1,11 @@
 package fr.hamunaptra_.oxaliacore.utils.api.items;
 
 import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.*;
 import org.bukkit.potion.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class Items {

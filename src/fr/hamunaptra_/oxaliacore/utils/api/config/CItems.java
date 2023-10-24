@@ -2,8 +2,8 @@ package fr.hamunaptra_.oxaliacore.utils.api.config;
 
 import fr.hamunaptra_.oxaliacore.Main;
 
-import org.apache.commons.io.FileUtils;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;

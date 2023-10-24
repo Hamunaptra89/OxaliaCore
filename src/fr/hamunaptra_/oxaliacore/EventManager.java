@@ -1,11 +1,10 @@
 package fr.hamunaptra_.oxaliacore;
 
-import fr.hamunaptra_.oxaliacore.addon.announce.AnnounceTask;
+import fr.hamunaptra_.oxaliacore.addon.announce.*;
 import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
-import fr.hamunaptra_.oxaliacore.addon.chatclear.ChatClearCommand;
-import fr.hamunaptra_.oxaliacore.addon.customitems.ItemCommand;
-import fr.hamunaptra_.oxaliacore.addon.customitems.ItemListener;
+import fr.hamunaptra_.oxaliacore.addon.chatclear.*;
+import fr.hamunaptra_.oxaliacore.addon.customitems.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
 import fr.hamunaptra_.oxaliacore.utils.*;
 import fr.hamunaptra_.oxaliacore.utils.api.config.*;

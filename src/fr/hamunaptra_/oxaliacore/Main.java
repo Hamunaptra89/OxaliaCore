@@ -1,7 +1,9 @@
 package fr.hamunaptra_.oxaliacore;
 
-import fr.hamunaptra_.oxaliacore.utils.api.placeholders.PlaceHolderAPI;
+import fr.hamunaptra_.oxaliacore.utils.api.placeholders.*;
+
 import net.milkbowl.vault.economy.Economy;
+
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.RegisteredServiceProvider;
 
