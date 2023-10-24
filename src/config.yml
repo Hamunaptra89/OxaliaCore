@@ -1,9 +1,21 @@
 Config:
   Module:
+    Announcer: false
     Bank: false
     Bar: false
     Shulker: false
     Items: false
+  #Announcer module to send message to all player
+  Announcer:
+    Enable: true #If true the announcer module will work and send a message every X seconds
+    Interval: 300 #In seconds
+    Messages:
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/menu &7afin de découvrir les &efonctionalités du serveur&7."
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/craftcustoms &7pour connaître tout &eles nouveaux crafts&7."
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/options &7et réglez tout &evos réglages&7."
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/contrat &7afin de faire &evos missions&7."
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/rangs &7pour bénéficier de &enouveaux avantages&7."
+      - "&6&lAnnonce &8&l▪ &7N'hésitez pas à faire la commande &b/kits &7pour réclamer &evos kits&7."
   #Shulker Module to open from inventory
   Shulker:
     Permission: Immersicraft.Shulker.Open

@@ -1,7 +1,9 @@
 package fr.hamunaptra_.oxaliacore;
 
+import fr.hamunaptra_.oxaliacore.addon.announce.AnnounceTask;
 import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
+import fr.hamunaptra_.oxaliacore.addon.chatclear.ChatClearCommand;
 import fr.hamunaptra_.oxaliacore.addon.customitems.ItemCommand;
 import fr.hamunaptra_.oxaliacore.addon.customitems.ItemListener;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
@@ -27,6 +29,8 @@ public class EventManager {
         Main.getInstance().saveResource("citems.yml", false);
         cItems.copy();
 
+        AnnounceTask.run();
+
         Rc("bank", new BankCommand());
         Rl(new BankListener());
         BankInterest.run();
@@ -36,7 +40,10 @@ public class EventManager {
         Rl(new BarBuy());
 
         Rc("citems", new ItemCommand());
+        Rc("citems", new ItemCommand());
         Rl(new ItemListener());
+
+        Rc("chatclear", new ChatClearCommand());
 
         Rl(new ShulkerListener());
     }

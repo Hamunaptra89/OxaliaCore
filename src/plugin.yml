@@ -10,6 +10,8 @@ commands:
     description: Customs Bar Modules
   citems:
     description: Customs Items module
+  chatclear:
+    description: Customs Items module
   bank:
     description: Customs Bank module
     aliases:

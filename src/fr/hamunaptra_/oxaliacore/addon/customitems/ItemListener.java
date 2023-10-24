@@ -48,6 +48,9 @@ public class ItemListener implements Listener{
         Player p = e.getPlayer();
         Color Color = new Color(p);
 
+        if (e.getItem() == null) return;
+        if (e.getItem().getItemMeta() == null) return;
+
         if (!CItems.getBoolean(key + "Consume") || e.getAction() != Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK) {
             ItemStack i = e.getItem();
             String getName = i.getItemMeta().getDisplayName();
