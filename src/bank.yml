@@ -1,0 +1,345 @@
+Bank:
+  PlaceHolders:
+    Interest:
+      Time: "&e%min minutes &aet &e%sec secondes"
+  Maximum: 5000000 # The bank limit.
+  Death:
+    Enable: false
+    Percent: 0.25
+    Message: "&6&lBanque &8&l▪ &cVous êtes mort et vous avez perdu &e%amount% ⛃ (50%)&a."
+  Interest:
+    Enable: true # If true, the interest system will work=
+    Time: 3600 # In seconds (60 min)
+    Percent: 0.03 # 0.03 is 3%, the player will get 3% of the bank balance
+    Minimum: 10000 # Minimum for the interest work (Cooldown start if player have the money)
+    Message:
+      Disable: "&6&lBanque &8&l▪ &cLes intérêts sont désactivés."
+      NeedMoreMoney: "&6&lBanque &8&l▪ &cVous avez besoin de plus d'argent pour faire fonctionner les intêrets."
+      Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%interest% ⛃&a d'intérêt."
+      Time: "&6&lBanque &8&l▪ &aIl vous reste &e%min minutes &aet &e%sec secondes&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
+  Message:
+    Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque (balance, deposit, withdraw, interest)"
+    InvalidNumber: "&6&lBanque &8&l▪ &cLe montant indiqué n'est pas valide."
+    Balance: "&6&lBanque &8&l▪ &aVotre solde est de &e%amount% ⛃&a."
+    NoMoney: "&6&lBanque &8&l▪ &cVous n'avez pas assez d'argent."
+    Deposit:
+      Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque deposit (montant)"
+      Success: "&6&lBanque &8&l▪ &aVous venez de déposer &e%amount% ⛃&a."
+    Withdraw:
+      Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque withdraw (montant)"
+      Success: "&6&lBanque &8&l▪ &aVous venez de retirer &e%amount% ⛃&a."
+  Guis:
+    Main:
+      Inv:
+        Name: '&dBanque'
+        Slot: 54
+        Permission: Immersicraft.Bank.Open
+      Item:
+        1:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 0
+          Name: '&r'
+        2:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 1
+          Name: '&r'
+        3:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 7
+          Name: '&r'
+        4:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 8
+          Name: '&r'
+        5:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 9
+          Name: '&r'
+        6:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 17
+          Name: '&r'
+        7:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 36
+          Name: '&r'
+        8:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 44
+          Name: '&r'
+        9:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 45
+          Name: '&r'
+        10:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 46
+          Name: '&r'
+        11:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 52
+          Name: '&r'
+        12:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 53
+          Name: '&r'
+        Deposit:
+          Material: CHEST
+          Slot: 21
+          Name: '&6&lBanque &8&l▪ &cDéposer'
+          Lore:
+            - ''
+            - ' &7Dans cette &acatégorie &7vous'
+            - ' &7allez pouvoir &adéposer &7de'
+            - ' &7l''argent dans votre &abanque'
+            - ' &7et ainsi &aobtenir des interêts&7.'
+            - ''
+            - '&a• &6Clique : &aDéposer de l''argent&6.'
+        Interest:
+          Material: EMERALD
+          Slot: 22
+          Name: '&6&lBanque &8&l▪ &cInterêts'
+          Lore:
+            - ''
+            - ' &aUtilisez &7la &aBanque &7pour &aprotéger'
+            - ' &7votre &aargent &7en le &amettant &7bien au &achaud&7.'
+            - ''
+            - '  &c&lVos Informations &6&l»'
+            - ''
+            - ' &a➥ &6Solde en Banque &7➠ &e%amount% &e⛁'
+            - ' &a➥ &6Prochain interêt &7➠ &e%interest_time%'
+            - ' &a➥ &6Gain des interêts &7➠ &e%immersicore_balance% &e⛁'
+            - ''
+            - '&aLes intérêts &7sont de &b2.5% &6(&aEx&6: Vous &agagnerez 2.5 ⛃&6,'
+            - '&6toutes les &aheures, &6si vous avez &adéposé 100 ⛃&6.)'
+        Withdraw:
+          Material: DROPPER
+          Slot: 23
+          Name: '&6&lBanque &8&l▪ &cRetirer'
+          Lore:
+            - ''
+            - ' &7Dans cette &acatégorie &7vous'
+            - ' &7allez pouvoir &aretirer &7de'
+            - ' &7l''argent de votre &abanque.'
+            - ''
+            - '&a• &6Clique : &aDéposer de l''argent&6.'
+    Deposit:
+      Inv:
+        Name: '&dBanque &7- &aDéposer'
+        Slot: 54
+        Permission: Immersicraft.Bank.Open
+      Item:
+        1:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 0
+          Name: '&r'
+        2:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 1
+          Name: '&r'
+        3:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 7
+          Name: '&r'
+        4:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 8
+          Name: '&r'
+        5:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 9
+          Name: '&r'
+        6:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 17
+          Name: '&r'
+        7:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 36
+          Name: '&r'
+        8:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 44
+          Name: '&r'
+        9:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 45
+          Name: '&r'
+        10:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 46
+          Name: '&r'
+        11:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 52
+          Name: '&r'
+        12:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 53
+          Name: '&r'
+        Deposit10:
+          Material: DIRT
+          Slot: 21
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        Deposit25:
+          Material: DIRT
+          Slot: 22
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        Deposit50:
+          Material: DIRT
+          Slot: 23
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        DepositCertainAmount:
+          Material: DISPENSER
+          Slot: 31
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+    Withdraw:
+      Inv:
+        Name: '&dBanque &7- &aRetiré'
+        Slot: 54
+        Permission: Immersicraft.Bank.Open
+      Item:
+        1:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 0
+          Name: '&r'
+        2:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 1
+          Name: '&r'
+        3:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 7
+          Name: '&r'
+        4:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 8
+          Name: '&r'
+        5:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 9
+          Name: '&r'
+        6:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 17
+          Name: '&r'
+        7:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 36
+          Name: '&r'
+        8:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 44
+          Name: '&r'
+        9:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 45
+          Name: '&r'
+        10:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 46
+          Name: '&r'
+        11:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 52
+          Name: '&r'
+        12:
+          Material: ORANGE_STAINED_GLASS_PANE
+          Slot: 53
+          Name: '&r'
+        Withdraw10:
+          Material: DIRT
+          Slot: 21
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        Withdraw25:
+          Material: DIRT
+          Slot: 22
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        Withdraw50:
+          Material: DIRT
+          Slot: 23
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
+        WithdrawCertainAmount:
+          Material: DISPENSER
+          Slot: 31
+          Name: '&9Bière'
+          Lore:
+            - '&8&m---------------------------------'
+            - ''
+            - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+            - ' &7et tentez de gagner le &ddouble ! &8(&e1000 ⛃&8)'
+            - ''
+            - '&8&m---------------------------------'
+            - '&a➥ &6Chance de gagner : &e50%'
+            - '&a➥ &6Rareté : &e✪✪✪✪✪'
+            - '&8&m---------------------------------'
