@@ -1,0 +1,16 @@
+name: ImmersiCore
+version: 1.0.0
+author: Hamunaptra_
+api-version: 1.13
+
+main: fr.hamunaptra_.immersicore.Main
+
+commands:
+  bar:
+    description: Customs Bar Modules
+  citems:
+    description: Customs Items module
+  bank:
+    description: Customs Bank module
+    aliases:
+      - banque
