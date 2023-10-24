@@ -12,12 +12,12 @@ public class PlaceHolderAPI extends PlaceholderExpansion {
 
     @Override
     public String getIdentifier() {
-        return "immersicore";
+        return "oxaliacore";
     }
 
     @Override
     public String getAuthor() {
-        return "Hamunaptra_";
+        return Main.getInstance().getDescription().getAuthors().toString();
     }
 
     @Override
