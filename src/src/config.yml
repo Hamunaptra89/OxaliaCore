@@ -1,0 +1,16 @@
+Config:
+  Module:
+    Bank: false
+    Bar: false
+    Shulker: false
+    Items: false
+  #Shulker Module to open from inventory
+  Shulker:
+    Permission: Immersicraft.Shulker.Open
+    Message:
+      NoPerm: '&d&lShulker &8&l▪ &cVous n''avez pas la permission d''ouvrir cette shulker.'
+  #Global messages
+  Messages:
+    Help: '&b&lImmersiCraft &8&l▪ &7Utilisez &a/ImmersiCore &eHelp&7.'
+    NoPerm: '&b&lImmersiCraft &8&l▪ &cVous n''avez pas la permission.'
+    Reload: '&b&lImmersiCraft &8&l▪ &aLe plugin vient d''être rechargé.'

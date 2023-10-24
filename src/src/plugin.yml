@@ -1,0 +1,16 @@
+name: OxaliaCore
+version: 0.0.3-BETA
+author: Hamunaptra_
+api-version: 1.13
+
+main: fr.hamunaptra_.oxaliacore.Main
+
+commands:
+  bar:
+    description: Customs Bar Modules
+  citems:
+    description: Customs Items module
+  bank:
+    description: Customs Bank module
+    aliases:
+      - banque

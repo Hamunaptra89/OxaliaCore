@@ -1,0 +1,163 @@
+Bar:
+  Message:
+    NoMoney: '&9&lBar &8&l▪ &cVous n''avez pas assez d''argent.'
+    NoPerm: '&9&lBar &8&l▪ &cVous n''avez pas la permission.'
+  Inv:
+    Name: '&eBar'
+    Slot: 54 #Must be a multiple of 9 (Min 9, 18, 27, 36, 45, Max 54)
+    Permission: Immersicraft.Bar.Open
+  Item:
+    Beer:
+      Material: POTION
+      Type: FIRE_RESISTANCE
+      Slot: 10
+      Name: '&9Bière'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e500 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e1000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪&7✪✪✪✪'
+        - '&8&m---------------------------------'
+      Price: 500
+      Reward: 1000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &9Bière &aà &e500 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e1000 ⛃ &a!'
+    Dodo:
+      Material: POTION
+      Type: INVISIBILITY
+      Slot: 11
+      Name: '&4Dodo'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e2500 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e5000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪&7✪✪✪✪'
+        - '&8&m---------------------------------'
+      Price: 2500
+      Reward: 5000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &4Dodo &aà &e2500 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e5000 ⛃ &a!'
+    Wine:
+      Material: POTION
+      Type: STRENGTH
+      Slot: 12
+      Name: '&cVin'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e7500 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e15000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪✪&7✪✪✪'
+        - '&8&m---------------------------------'
+      Price: 7500
+      Reward: 15000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté du &cVin &aà &e7500 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e15000 ⛃ &a!'
+    Tequila:
+      Material: POTION
+      Type: SPEED
+      Slot: 13
+      Name: '&aTequila'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e15000 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e30000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪✪&7✪✪✪'
+        - '&8&m---------------------------------'
+      Price: 15000
+      Reward: 30000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &aTequila &aà &e15000 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e30000 ⛃ &a!'
+    Vodka:
+      Material: POTION
+      Type: JUMP
+      Slot: 14
+      Name: '&bVodka'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e25000 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e50000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪✪✪&7✪✪'
+        - '&8&m---------------------------------'
+      Price: 25000
+      Reward: 50000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &bVodka &aà &e25000 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e50000 ⛃ &a!'
+    Rhum:
+      Material: POTION
+      Type: WEAKNESS
+      Slot: 15
+      Name: '&eRhum'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e50000 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e100000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪✪✪✪&7✪'
+        - '&8&m---------------------------------'
+      Price: 50000
+      Reward: 100000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &eRhum &aà &e50000 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e100000 ⛃ &a!'
+    Whisky:
+      Material: POTION
+      Type: NIGHT_VISION
+      Slot: 16
+      Name: '&6Whisky'
+      Lore:
+        - '&8&m---------------------------------'
+        - ''
+        - ' &aAchetez &7cette bouteille pour §e150000 ⛃&7,'
+        - ' &7et tentez de gagnez le &ddouble &7! &8(&e300000 ⛃&8)'
+        - ''
+        - '&8&m---------------------------------'
+        - '&a➥ &6Chance de gagnez : &e50%'
+        - '&a➥ &6Rareté : &e✪✪✪✪✪'
+        - '&8&m---------------------------------'
+      Price: 150000
+      Reward: 300000
+      Chance: 50
+      Message:
+        Buy: '&9&lBar &8&l▪ &aVous avez acheté une &6Whisky &aà &e150000 ⛃&a.'
+        Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
+        Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e300000 ⛃ &a!'
