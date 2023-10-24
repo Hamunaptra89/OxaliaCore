@@ -1,9 +1,9 @@
-name: ImmersiCore
+name: OxaliaCore
 version: 1.0.0
 author: Hamunaptra_
 api-version: 1.13
 
-main: fr.hamunaptra_.immersicore.Main
+main: fr.hamunaptra_.oxaliacore.Main
 
 commands:
   bar:

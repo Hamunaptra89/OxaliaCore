@@ -8,11 +8,13 @@ Bank:
     Percent: 0.25
     Message: "&6&lBanque &8&l▪ &cVous êtes mort et vous avez perdu &e%amount% ⛃ (50%)&a."
   Interest:
-    Enable: true
+    Enable: true # If true, the interest system will work=
     Time: 3600 # In seconds (60 min)
-    Percent: 0.03
-    Minimum: 10000
+    Percent: 0.03 # 0.03 is 3%, the player will get 3% of the bank balance
+    Minimum: 10000 # Minimum for the interest work (Cooldown start if player have the money)
     Message:
+      Disable: "&6&lBanque &8&l▪ &cLes intérêts sont désactivés."
+      NeedMoreMoney: "&6&lBanque &8&l▪ &cVous avez besoin de plus d'argent pour faire fonctionner les intêrets."
       Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%interest% ⛃&a d'intérêt."
       Time: "&6&lBanque &8&l▪ &aIl vous reste &e%min minutes &aet &e%sec secondes&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
   Message:
