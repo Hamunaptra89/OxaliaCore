@@ -44,7 +44,7 @@ public class MainCommand implements CommandExecutor {
             return false;
         }
 
-        if (cmd.getName().equalsIgnoreCase("vote")) {
+        if (cmd.getName().equalsIgnoreCase("votes")) {
             Color.formatted(p, "Config.Commands.Vote");
             return false;
         }

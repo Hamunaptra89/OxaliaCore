@@ -1,5 +1,5 @@
 name: OxaliaCore
-version: 0.0.7-BETA
+version: 0.0.8-BETA
 author: Hamunaptra_
 api-version: 1.13
 
@@ -31,5 +31,5 @@ commands:
     description: Store Command
     aliases:
       - boutique
-  vote:
+  votes:
     description: Vote Command

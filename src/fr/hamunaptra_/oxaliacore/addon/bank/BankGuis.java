@@ -28,9 +28,9 @@ public class BankGuis implements Listener {
     public void onInventoryOpen(InventoryOpenEvent e) {
         if (e.getPlayer() instanceof Player) {
             Player p = (Player) e.getPlayer();
-            Color color = new Color(p);
+            Color Color = new Color(p);
 
-            if (e.getView().getTitle().equals(color.set(Bank.getString("Bank.Guis.Main.Inv.Name"))) && !UpdateGui.containsKey(p)) {
+            if (e.getView().getTitle().equals(Bank.getString("Bank.Guis.Main.Inv.Name")) && !UpdateGui.containsKey(p)) {
                 BukkitTask task = new BukkitRunnable() {
                     @Override
                     public void run() {
@@ -49,7 +49,7 @@ public class BankGuis implements Listener {
             Player p = (Player) e.getPlayer();
             Color Color = new Color(p);
 
-            if (e.getView().getTitle().equals(Color.set(Bank.getString("Bank.Guis.Main.Inv.Name"))) && UpdateGui.containsKey(p)) {
+            if (e.getView().getTitle().equals(Bank.getString("Bank.Guis.Main.Inv.Name")) && UpdateGui.containsKey(p)) {
                 BukkitTask task = UpdateGui.get(p);
                 task.cancel();
                 UpdateGui.remove(p);

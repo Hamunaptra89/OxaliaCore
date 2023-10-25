@@ -180,6 +180,10 @@ public class BarBuy implements Listener {
                     p.sendMessage(NoMoney);
                 }
             }
+
+            if (getName.equals(Color.set(Bar.getString(bar + "Leave.Name")))) {
+                p.closeInventory();
+            }
         }
     }
 }

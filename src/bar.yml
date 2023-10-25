@@ -3,14 +3,62 @@ Bar:
     NoMoney: '&9&lBar &8&l▪ &cVous n''avez pas assez d''argent.'
     NoPerm: '&9&lBar &8&l▪ &cVous n''avez pas la permission.'
   Inv:
-    Name: '&eBar'
+    Name: ':offset_-53::bar_54:'
     Slot: 54 #Must be a multiple of 9 (Min 9, 18, 27, 36, 45, Max 54)
     Permission: OxaliaCore.Bar.Open
   Item:
+    1:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 0
+      Name: '&r'
+    2:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 1
+      Name: '&r'
+    3:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 7
+      Name: '&r'
+    4:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 8
+      Name: '&r'
+    5:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 9
+      Name: '&r'
+    6:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 17
+      Name: '&r'
+    7:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 36
+      Name: '&r'
+    8:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 44
+      Name: '&r'
+    9:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 45
+      Name: '&r'
+    10:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 46
+      Name: '&r'
+    11:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 52
+      Name: '&r'
+    12:
+      Material: ORANGE_STAINED_GLASS_PANE
+      Slot: 53
+      Name: '&r'
     Beer:
       Material: POTION
       Type: FIRE_RESISTANCE
-      Slot: 10
+      Slot: 20
       Name: '&9Bière'
       Lore:
         - '&8&m---------------------------------'
@@ -32,7 +80,7 @@ Bar:
     Dodo:
       Material: POTION
       Type: INVISIBILITY
-      Slot: 11
+      Slot: 21
       Name: '&4Dodo'
       Lore:
         - '&8&m---------------------------------'
@@ -54,7 +102,7 @@ Bar:
     Wine:
       Material: POTION
       Type: STRENGTH
-      Slot: 12
+      Slot: 22
       Name: '&cVin'
       Lore:
         - '&8&m---------------------------------'
@@ -76,7 +124,7 @@ Bar:
     Tequila:
       Material: POTION
       Type: SPEED
-      Slot: 13
+      Slot: 23
       Name: '&aTequila'
       Lore:
         - '&8&m---------------------------------'
@@ -98,7 +146,7 @@ Bar:
     Vodka:
       Material: POTION
       Type: JUMP
-      Slot: 14
+      Slot: 24
       Name: '&bVodka'
       Lore:
         - '&8&m---------------------------------'
@@ -120,7 +168,7 @@ Bar:
     Rhum:
       Material: POTION
       Type: WEAKNESS
-      Slot: 15
+      Slot: 30
       Name: '&eRhum'
       Lore:
         - '&8&m---------------------------------'
@@ -142,7 +190,7 @@ Bar:
     Whisky:
       Material: POTION
       Type: NIGHT_VISION
-      Slot: 16
+      Slot: 32
       Name: '&6Whisky'
       Lore:
         - '&8&m---------------------------------'
@@ -161,3 +209,10 @@ Bar:
         Buy: '&9&lBar &8&l▪ &aVous avez acheté une &6Whisky &aà &e150000 ⛃&a.'
         Lose: '&9&lBar &8&l▪ &cDommage, vous avez perdu !'
         Win: '&9&lBar &8&l▪ &aBravo, vous avez gagné &e300000 ⛃ &a!'
+    Leave:
+      Material: BARRIER
+      Slot: 49
+      Name: '&c&lQuitter &8&l▪ &cMenu Principal'
+      Lore:
+        - ''
+        - '&a• &6Clique : &aQuitter le Menu&6.'

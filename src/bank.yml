@@ -34,7 +34,7 @@ Bank:
   Guis:
     Main:
       Inv:
-        Name: '&dBanque &7▪ &aMenu Principal'
+        Name: ':offset_-53::bank_54:'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -131,10 +131,10 @@ Bank:
           Name: '&c&lQuitté &8&l▪ &cMenu Principal'
           Lore:
             - ''
-            - '&a• &6Clique : &aDéposer de l''argent&6.'
+            - '&a• &6Clique : &aQuitter le Menu&6.'
     Deposit:
       Inv:
-        Name: '&dBanque &7▪ &aDéposer'
+        Name: ':offset_-53::banks_54:'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -196,7 +196,7 @@ Bank:
             - ' &7Cliquer pour déposer 25%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_25%'
+            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_25% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 25%"
@@ -210,7 +210,7 @@ Bank:
             - ' &7Cliquer pour déposer 50%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_50%'
+            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_50% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 50%"
@@ -224,7 +224,7 @@ Bank:
             - ' &7Cliquer pour déposer 100%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_100%'
+            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_100% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 100%"
@@ -235,7 +235,7 @@ Bank:
           Lore:
             - ''
             - ' &7Cliquer pour déposer un'
-            - ' certain montant d''argent'
+            - ' &7certain montant d''argent'
             - ' &7en banque.'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
@@ -245,10 +245,10 @@ Bank:
           Name: '&c&lRetour &8&l▪ &cMenu Principal'
           Lore:
             - ''
-            - '&a• &6Clique : &aRetourner au menu principal&6.'
+            - '&a• &6Clique : &aRetour au menu principal&6.'
     Withdraw:
       Inv:
-        Name: '&dBanque &7▪ &aRetiré'
+        Name: ':offset_-53::banks_54:'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -310,7 +310,7 @@ Bank:
             - ' &7Cliquer pour retirer 25%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_25%'
+            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_25% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 25%"
@@ -324,7 +324,7 @@ Bank:
             - ' &7Cliquer pour retirer 50%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_50%'
+            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_50% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 50%"
@@ -338,7 +338,7 @@ Bank:
             - ' &7Cliquer pour retirer 100%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_100%'
+            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_100% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 100%"
@@ -359,4 +359,4 @@ Bank:
           Name: '&c&lRetour &8&l▪ &cMenu Principal'
           Lore:
             - ''
-            - '&a• &6Clique : &aRetourner au menu principal&6.'
+            - '&a• &6Clique : &aRetour au menu principal&6.'

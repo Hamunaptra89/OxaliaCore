@@ -7,17 +7,28 @@ Config:
     Items: false
   #Custom command module
   Commands:
-    Store: |
-      '&8&m-------------------------------------'
-      ' &r &b&lBoutique &8&l▪ &bhttps://oxaliamc.fr/boutique'
-      '&8&m-------------------------------------'
     Discord: |
       '&8&m-------------------------------------'
       ' &r &d&lDiscord &8&l▪ &bhttps://oxaliamc.fr/discord'
       '&8&m-------------------------------------'
+    Link: |
+      '&8&m-------------------------------------'
+      ' &r &d&lDiscord &8&l▪ &bhttps://oxaliamc.fr/discord'
+      ' &r &a&lSite &8&l▪ &bhttps://oxaliamc.fr/'
+      ' &r &9&lVote &8&l▪ &bhttps://oxaliamc.fr/vote'
+      ' &r &b&lBoutique &8&l▪ &bhttps://oxaliamc.fr/boutique'
+      '&8&m-------------------------------------'
     Site: |
       '&8&m-------------------------------------'
       ' &r &a&lSite &8&l▪ &bhttps://oxaliamc.fr/'
+      '&8&m-------------------------------------'
+    Store: |
+      '&8&m-------------------------------------'
+      ' &r &b&lBoutique &8&l▪ &bhttps://oxaliamc.fr/boutique'
+      '&8&m-------------------------------------'
+    Vote: |
+      '&8&m-------------------------------------'
+      ' &r &9&lVote &8&l▪ &bhttps://oxaliamc.fr/vote'
       '&8&m-------------------------------------'
   #Announcer module to send message to all player
   Announcer:

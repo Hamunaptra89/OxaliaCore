@@ -48,7 +48,7 @@ public class EventManager {
         Rc("link", new MainCommand());
         Rc("site", new MainCommand());
         Rc("store", new MainCommand());
-        Rc("vote", new MainCommand());
+        Rc("votes", new MainCommand());
         Rc("clearreloadall", new MainCommand());
 
         Rl(new ShulkerListener());
