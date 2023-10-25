@@ -1,5 +1,6 @@
 package fr.hamunaptra_.oxaliacore.utils.api.chat;
 
+import fr.hamunaptra_.oxaliacore.Main;
 import fr.hamunaptra_.oxaliacore.utils.ConfigManager;
 import fr.hamunaptra_.oxaliacore.utils.api.config.*;
 import fr.hamunaptra_.oxaliacore.utils.api.data.*;
@@ -13,7 +14,7 @@ import java.util.List;
 public class Color {
 
     static ConfigManager Config = ConfigManager.getInstance();
-    private Player p;
+    private final Player p;
 
     public Color(Player p) {
         this.p = p;
@@ -28,12 +29,19 @@ public class Color {
         int sec = lastInterest % 60;
 
         return ChatColor.translateAlternateColorCodes('&', s
-                .replaceAll("%oxalia_bank_balance%", String.valueOf(Data.getBalance()))
-                .replaceAll("%oxalia_bank_interest_money%", String.valueOf(Data.getBalance() * Bank.getDouble("Bank.Interest.Percent")))
-                .replaceAll("%oxalia__bank_interest_time_%", Bank.getString("Bank.PlaceHolders.Interest.Time")
+                .replaceAll("%oxalia_bank_balance%", String.format("%,2f", Data.getBalance()))
+                .replaceAll("%oxalia_bank_interest_money%", String.format("%,2f", Data.getBalance() * Bank.getDouble("Bank.Interest.Percent")))
+                .replaceAll("%oxalia_bank_interest_time%", Bank.getString("Bank.PlaceHolders.Interest.Time")
                         .replace("%hour", String.valueOf(hour))
                         .replace("%min", String.valueOf(min))
-                        .replace("%sec", String.valueOf(sec))));
+                        .replace("%sec", String.valueOf(sec))
+                )
+                .replaceAll("%oxalia_bank_deposit_25%", String.format("%.2f", Main.economy.getBalance(p) / 4))
+                .replaceAll("%oxalia_bank_deposit_50%", String.format("%.2f", Main.economy.getBalance(p) / 2))
+                .replaceAll("%oxalia_bank_deposit_100%", String.format("%.2f", Main.economy.getBalance(p)))
+                .replaceAll("%oxalia_bank_withdraw_25%", String.format("%.2f", Data.getBalance() / 4))
+                .replaceAll("%oxalia_bank_withdraw_50%", String.format("%.2f", Data.getBalance() / 2))
+                .replaceAll("%oxalia_bank_withdraw_100%", String.format("%.2f", Data.getBalance())));
     }
 
     public List<String> set(List<String> s) {
@@ -47,12 +55,19 @@ public class Color {
 
         for (String line : s) {
             lores.add(ChatColor.translateAlternateColorCodes('&', line
-                    .replaceAll("%oxalia_bank_balance%", String.valueOf(Data.getBalance()))
-                    .replaceAll("%oxalia_bank_interest_money%", String.valueOf(Data.getBalance() * Bank.getDouble("Bank.Interest.Percent")))
-                    .replaceAll("%oxalia__bank_interest_time_%", Bank.getString("Bank.PlaceHolders.Interest.Time")
+                    .replaceAll("%oxalia_bank_balance%", String.format("%.2f", Data.getBalance()))
+                    .replaceAll("%oxalia_bank_interest_money%", String.format("%.2f", Data.getBalance() * Bank.getDouble("Bank.Interest.Percent")))
+                    .replaceAll("%oxalia_bank_interest_time%", Bank.getString("Bank.PlaceHolders.Interest.Time")
                             .replace("%hour", String.valueOf(hour))
                             .replace("%min", String.valueOf(min))
-                            .replace("%sec", String.valueOf(sec)))));
+                            .replace("%sec", String.valueOf(sec))
+                    )
+                    .replaceAll("%oxalia_bank_deposit_25%", String.format("%.2f", Main.economy.getBalance(p) / 4))
+                    .replaceAll("%oxalia_bank_deposit_50%", String.format("%.2f", Main.economy.getBalance(p) / 2))
+                    .replaceAll("%oxalia_bank_deposit_100%", String.format("%.2f", Main.economy.getBalance(p)))
+                    .replaceAll("%oxalia_bank_withdraw_25%", String.format("%.2f", Data.getBalance() / 4))
+                    .replaceAll("%oxalia_bank_withdraw_50%", String.format("%.2f", Data.getBalance() / 2))
+                    .replaceAll("%oxalia_bank_withdraw_100%", String.format("%.2f", Data.getBalance()))));
         }
         return lores;
     }

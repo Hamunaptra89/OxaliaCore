@@ -26,7 +26,11 @@ public class BankInterest {
                             Data.removeInterestTime(1);
                         }
 
-                        if (Data.getInterestTime() == 0 && Data.getBalance() >= Bank.getDouble(path + "Minimum")) {
+                        if (Data.getInterestTime() == 0 && Data.getBalance() <= Bank.getDouble(path + "Minimum")) {
+                            Data.setInterestTime(Bank.getInt(path + "Time"));
+                        }
+
+                        else if (Data.getInterestTime() == 0 && Data.getBalance() >= Bank.getDouble(path + "Minimum")) {
                             Data.setInterestTime(Bank.getInt(path + "Time"));
                             double amount = Data.getBalance() * Bank.getDouble(path + "Percent");
                             Data.deposit(amount);

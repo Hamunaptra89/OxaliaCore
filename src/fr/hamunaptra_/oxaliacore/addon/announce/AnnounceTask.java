@@ -16,21 +16,26 @@ public class AnnounceTask {
     public static void run() {
         Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
             public void run() {
-                for (Player p : Bukkit.getOnlinePlayers()) {
-                    Color Color = new Color(p);
+                if (Config.getConfig().getBoolean(path + "Enable")) {
+                    if (Bukkit.getOnlinePlayers().isEmpty()) {
+                        return;
+                    }
 
-                    if (Config.getConfig().getBoolean(path + "Enable")) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        Color Color = new Color(p);
+
                         String message = Config.getConfig().getStringList(path + "Messages").get(messages);
-                        Bukkit.broadcastMessage(Color.set(message));
-                        messages++;
+                        String formattedMessage = Color.set(message);
+                        p.sendMessage(formattedMessage);
+                    }
 
-                        if (messages >= Config.getConfig().getStringList(path + "Messages").size()) {
-                            messages = 0;
-                        }
+                    messages++;
+
+                    if (messages >= Config.getConfig().getStringList(path + "Messages").size()) {
+                        messages = 0;
                     }
                 }
             }
         }, 0, Config.getConfig().getInt("Config.Announcer.Interval") * 20L);
     }
 }
-

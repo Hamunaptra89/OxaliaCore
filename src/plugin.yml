@@ -1,28 +1,35 @@
 name: OxaliaCore
-version: 0.0.6-BETA
+version: 0.0.7-BETA
 author: Hamunaptra_
 api-version: 1.13
 
 main: fr.hamunaptra_.oxaliacore.Main
 
 commands:
-  clearreloadall:
-    description: Custom Reload for ClearLag and ClearLagTimer
   bar:
-    description: Customs Bar Modules
+    description: Bar module
   bank:
-    description: Customs Bank module
+    description: Bank module
     aliases:
       - banque
   citems:
-    description: Customs Items module
+    description: CItems module
+  #Commands Module
+  clearreloadall:
+    description: ClearLag & ClearLagTimer Reload Command
   chatclear:
     description: ChatClear Command
-  site:
-    description: Site Command
   discord:
     description: Discord Command
+  link:
+    description: Link Command
+    aliases:
+      - lien
+  site:
+    description: Site Command
   store:
     description: Store Command
     aliases:
       - boutique
+  vote:
+    description: Vote Command
