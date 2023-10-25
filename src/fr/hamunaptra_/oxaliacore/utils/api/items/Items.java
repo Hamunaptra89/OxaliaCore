@@ -42,10 +42,8 @@ public class Items {
     public Items setPotion(PotionType type, boolean isSplash) {
         PotionMeta m = (PotionMeta) i.getItemMeta();
         PotionData d = new PotionData(type, isSplash, false);
-
         m.setBasePotionData(d);
         i.setItemMeta(m);
-
         return this;
     }
 

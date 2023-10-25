@@ -7,8 +7,11 @@ import fr.hamunaptra_.oxaliacore.utils.api.data.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
+import java.text.DecimalFormat;
 
 public class BankInterest {
+
+    private static final DecimalFormat df = new DecimalFormat("#0.00");
 
     public static void run() {
         Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
@@ -27,7 +30,8 @@ public class BankInterest {
                             Data.setInterestTime(Bank.getInt(path + "Time"));
                             double amount = Data.getBalance() * Bank.getDouble(path + "Percent");
                             Data.deposit(amount);
-                            p.sendMessage(Color.set(Bank.getString(path + "Message.Get")).replaceAll("%interest%", String.valueOf(amount)));
+                            String formattedAmount = df.format(amount);
+                            p.sendMessage(Color.set(Bank.getString(path + "Message.Get")).replaceAll("%interest%", formattedAmount));
                         }
                     }
                 }

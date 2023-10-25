@@ -5,7 +5,7 @@ Bar:
   Inv:
     Name: '&eBar'
     Slot: 54 #Must be a multiple of 9 (Min 9, 18, 27, 36, 45, Max 54)
-    Permission: Immersicraft.Bar.Open
+    Permission: OxaliaCore.Bar.Open
   Item:
     Beer:
       Material: POTION

@@ -1,6 +1,6 @@
 CItems:
   Admin:
-      Permission: OxaliaCore.Admin
+    Permission: OxaliaCore.Admin
   Consume: false
   Potato:
     Name: '&ePatate &7de &6Célérité 2 &8(&e10min&8)'

@@ -1,5 +1,6 @@
 package fr.hamunaptra_.oxaliacore.utils.api.chat;
 
+import fr.hamunaptra_.oxaliacore.utils.ConfigManager;
 import fr.hamunaptra_.oxaliacore.utils.api.config.*;
 import fr.hamunaptra_.oxaliacore.utils.api.data.*;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class Color {
 
+    static ConfigManager Config = ConfigManager.getInstance();
     private Player p;
 
     public Color(Player p) {
@@ -34,16 +36,35 @@ public class Color {
                         .replace("%sec", String.valueOf(sec))));
     }
 
-
-    public List<String> set(List<String> lore) {
-        DataManager Data = new DataManager(p);
+    public List<String> set(List<String> s) {
         List<String> lores = new ArrayList<>();
+        DataManager Data = new DataManager(p);
 
-        for (String line : lore) {
+        int lastInterest = Data.getInterestTime();
+        int hour = lastInterest % 3600;
+        int min = (lastInterest % 3600) / 60;
+        int sec = lastInterest % 60;
+
+        for (String line : s) {
             lores.add(ChatColor.translateAlternateColorCodes('&', line
-                    .replaceAll("%oxalia_bank_balance%", String.valueOf(Data.getBalance()))));
+                    .replaceAll("%oxalia_bank_balance%", String.valueOf(Data.getBalance()))
+                    .replaceAll("%oxalia_bank_interest_money%", String.valueOf(Data.getBalance() * Bank.getDouble("Bank.Interest.Percent")))
+                    .replaceAll("%oxalia__bank_interest_time_%", Bank.getString("Bank.PlaceHolders.Interest.Time")
+                            .replace("%hour", String.valueOf(hour))
+                            .replace("%min", String.valueOf(min))
+                            .replace("%sec", String.valueOf(sec)))));
         }
-
         return lores;
+    }
+
+    public void formatted(Player p, String path) {
+        String s = Config.getConfig().getString(path);
+        if (s != null) {
+            String[] lignes = s.split("\n");
+            for (String ligne : lignes) {
+                String ligneNettoyee = ligne.replaceAll("[']+", "").trim();
+                p.sendMessage(set(ligneNettoyee));
+            }
+        }
     }
 }

@@ -3,7 +3,8 @@ package fr.hamunaptra_.oxaliacore;
 import fr.hamunaptra_.oxaliacore.addon.announce.*;
 import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
-import fr.hamunaptra_.oxaliacore.addon.chatclear.*;
+import fr.hamunaptra_.oxaliacore.addon.commands.ChatClearCommand;
+import fr.hamunaptra_.oxaliacore.addon.commands.MainCommand;
 import fr.hamunaptra_.oxaliacore.addon.customitems.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
 import fr.hamunaptra_.oxaliacore.utils.*;
@@ -43,6 +44,11 @@ public class EventManager {
         Rl(new ItemListener());
 
         Rc("chatclear", new ChatClearCommand());
+
+        Rc("site", new MainCommand());
+        Rc("discord", new MainCommand());
+        Rc("store", new MainCommand());
+        Rc("clearreloadall", new MainCommand());
 
         Rl(new ShulkerListener());
     }

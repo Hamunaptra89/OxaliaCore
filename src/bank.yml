@@ -33,7 +33,7 @@ Bank:
       Inv:
         Name: '&dBanque'
         Slot: 54
-        Permission: Immersicraft.Bank.Open
+        Permission: OxaliaCore.Bank.Open
       Item:
         1:
           Material: ORANGE_STAINED_GLASS_PANE
@@ -127,7 +127,7 @@ Bank:
       Inv:
         Name: '&dBanque &7- &aDéposer'
         Slot: 54
-        Permission: Immersicraft.Bank.Open
+        Permission: OxaliaCore.Bank.Open
       Item:
         1:
           Material: ORANGE_STAINED_GLASS_PANE
@@ -237,7 +237,7 @@ Bank:
       Inv:
         Name: '&dBanque &7- &aRetiré'
         Slot: 54
-        Permission: Immersicraft.Bank.Open
+        Permission: OxaliaCore.Bank.Open
       Item:
         1:
           Material: ORANGE_STAINED_GLASS_PANE
