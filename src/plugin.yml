@@ -1,5 +1,5 @@
 name: OxaliaCore
-version: 0.1.0-BETA
+version: 0.1.1-BETA
 author: Hamunaptra_
 api-version: 1.13
 
@@ -14,6 +14,8 @@ commands:
       - banque
   citems:
     description: CItems module
+  deletelog:
+    description: Log module command
   #Commands Module
   clearreloadall:
     description: ClearLag & ClearLagTimer Reload Command
