@@ -10,7 +10,7 @@ import java.util.List;
 
 public class Items {
     private ItemStack i;
-
+    public Items () {}
     public Items(Material m, int... quantities) {
         if (quantities.length == 0) {
             this.i = new ItemStack(m);

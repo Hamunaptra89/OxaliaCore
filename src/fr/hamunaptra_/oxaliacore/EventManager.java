@@ -50,6 +50,7 @@ public class EventManager {
         Rc("store", new MainCommand());
         Rc("votes", new MainCommand());
         Rc("clearreloadall", new MainCommand());
+        Rc("furnace", new FurnaceCommand());
 
         Rl(new ShulkerListener());
     }

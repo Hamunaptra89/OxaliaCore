@@ -1,5 +1,5 @@
 name: OxaliaCore
-version: 0.0.8-BETA
+version: 0.0.9-BETA
 author: Hamunaptra_
 api-version: 1.13
 
@@ -21,6 +21,8 @@ commands:
     description: ChatClear Command
   discord:
     description: Discord Command
+  furnace:
+    description: Smelt ore Command
   link:
     description: Link Command
     aliases:
