@@ -12,11 +12,11 @@ import java.text.DecimalFormat;
 public class BankInterest {
 
     private static final DecimalFormat df = new DecimalFormat("#0.00");
+    public static String path = "Bank.Interest.";
 
     public static void run() {
         Bukkit.getServer().getScheduler().runTaskTimer(Main.getInstance(), new Runnable() {
             public void run() {
-                String path = "Bank.Interest.";
                 if (Bank.getBoolean(path + "Enable")) {
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         DataManager Data = new DataManager(p);

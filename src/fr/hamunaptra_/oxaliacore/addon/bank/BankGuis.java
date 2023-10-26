@@ -23,6 +23,7 @@ import java.util.Map;
 public class BankGuis implements Listener {
 
     private final Map<Player, BukkitTask> UpdateGui = new HashMap<>();
+    public static String bank = "Bank.Guis.";
 
     @EventHandler
     public void onInventoryOpen(InventoryOpenEvent e) {
@@ -30,7 +31,7 @@ public class BankGuis implements Listener {
             Player p = (Player) e.getPlayer();
             Color Color = new Color(p);
 
-            if (e.getView().getTitle().equals(Color.set(Bank.getString("Bank.Guis.Main.Inv.Name"))) && !UpdateGui.containsKey(p)) {
+            if (e.getView().getTitle().equals(Color.set(Bank.getString(bank + "Main.Inv.Name"))) && !UpdateGui.containsKey(p)) {
                 BukkitTask task = new BukkitRunnable() {
                     @Override
                     public void run() {
@@ -49,7 +50,7 @@ public class BankGuis implements Listener {
             Player p = (Player) e.getPlayer();
             Color Color = new Color(p);
 
-            if (e.getView().getTitle().equals(Color.set(Bank.getString("Bank.Guis.Main.Inv.Name"))) && UpdateGui.containsKey(p)) {
+            if (e.getView().getTitle().equals(Color.set(Bank.getString(bank + "Main.Inv.Name"))) && UpdateGui.containsKey(p)) {
                 BukkitTask task = UpdateGui.get(p);
                 task.cancel();
                 UpdateGui.remove(p);
@@ -61,14 +62,14 @@ public class BankGuis implements Listener {
     public static void BankMenuMain(Player p) {
         Color Color = new Color(p);
 
-        Inventory inv = Bukkit.createInventory(null, Bank.getInt("Bank.Guis.Main.Inv.Slot"), Color.set(Bank.getString("Bank.Guis.Main.Inv.Name")));
-        ConfigurationSection s = Bank.getConfigurationSection("Bank.Guis.Main.Item");
+        Inventory inv = Bukkit.createInventory(null, Bank.getInt(bank + "Main.Inv.Slot"), Color.set(Bank.getString(bank + "Main.Inv.Name")));
+        ConfigurationSection s = Bank.getConfigurationSection(bank + "Main.Item");
 
         if (s != null) {
             for (String key : s.getKeys(false)) {
-                String path = "Bank.Guis.Main.Item." + key;
+                String path = bank + "Main.Item." + key;
                 if (Bank.getInt(path + ".Slot") >= 0 &&
-                        Bank.getInt(path + ".Slot") < Bank.getInt("Bank.Guis.Main.Inv.Slot")) {
+                        Bank.getInt(path + ".Slot") < Bank.getInt(path + "Main.Inv.Slot")) {
 
                     Items item = new Items(Material.getMaterial(Bank.getString(path + ".Material")), Bank.getInt(path + ".Amount"))
                             .setName(Color.set(Bank.getString(path + ".Name")))
@@ -84,14 +85,14 @@ public class BankGuis implements Listener {
     public static void BankMenuDeposit(Player p) {
         Color Color = new Color(p);
 
-        Inventory inv = Bukkit.createInventory(null, Bank.getInt("Bank.Guis.Deposit.Inv.Slot"), Color.set(Bank.getString("Bank.Guis.Deposit.Inv.Name")));
-        ConfigurationSection s = Bank.getConfigurationSection("Bank.Guis.Deposit.Item");
+        Inventory inv = Bukkit.createInventory(null, Bank.getInt(bank + "Deposit.Inv.Slot"), Color.set(Bank.getString(bank + "Deposit.Inv.Name")));
+        ConfigurationSection s = Bank.getConfigurationSection(bank + "Deposit.Item");
 
         if (s != null) {
             for (String key : s.getKeys(false)) {
-                String path = "Bank.Guis.Deposit.Item." + key;
+                String path = bank + "Deposit.Item." + key;
                 if (Bank.getInt(path + ".Slot") >= 0 &&
-                        Bank.getInt(path + ".Slot") < Bank.getInt("Bank.Guis.Deposit.Inv.Slot")) {
+                        Bank.getInt(path + ".Slot") < Bank.getInt(bank + "Deposit.Inv.Slot")) {
 
                     Items item = new Items(Material.getMaterial(Bank.getString(path + ".Material")), Bank.getInt(path + ".Amount"))
                             .setName(Color.set(Bank.getString(path + ".Name")))
@@ -107,14 +108,14 @@ public class BankGuis implements Listener {
     public static void BankMenuWithdraw(Player p) {
         Color Color = new Color(p);
 
-        Inventory inv = Bukkit.createInventory(null, Bank.getInt("Bank.Guis.Withdraw.Inv.Slot"), Color.set(Bank.getString("Bank.Guis.Withdraw.Inv.Name")));
-        ConfigurationSection s = Bank.getConfigurationSection("Bank.Guis.Withdraw.Item");
+        Inventory inv = Bukkit.createInventory(null, Bank.getInt(bank + "Withdraw.Inv.Slot"), Color.set(Bank.getString(bank + "Withdraw.Inv.Name")));
+        ConfigurationSection s = Bank.getConfigurationSection(bank + "Withdraw.Item");
 
         if (s != null) {
             for (String key : s.getKeys(false)) {
-                String path = "Bank.Guis.Withdraw.Item." + key;
+                String path = bank + "Withdraw.Item." + key;
                 if (Bank.getInt(path + ".Slot") >= 0 &&
-                        Bank.getInt(path + ".Slot") < Bank.getInt("Bank.Guis.Withdraw.Inv.Slot")) {
+                        Bank.getInt(path + ".Slot") < Bank.getInt(bank + "Withdraw.Inv.Slot")) {
 
                     Items item = new Items(Material.getMaterial(Bank.getString(path + ".Material")), Bank.getInt(path + ".Amount"))
                             .setName(Color.set(Bank.getString(path + ".Name")))

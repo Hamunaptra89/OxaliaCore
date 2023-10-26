@@ -30,6 +30,67 @@ Config:
       '&8&m-------------------------------------'
       ' &r &9&lVote &8&l▪ &bhttps://oxaliamc.fr/vote'
       '&8&m-------------------------------------'
+    Furnace:
+      Success: "&b&lFurnace &8&l▪ &aVous avez cuit vos minerais."
+      NoMaterial: "&b&lFurnace &8&l▪ &cVous n'avez rien à cuire."
+      Article:
+        1:
+          Base: COAL_ORE
+          Result: COAL
+        2:
+          Base: DEEPSLATE_COAL_ORE
+          Result: COAL
+        3:
+          Base: IRON_ORE
+          Result: IRON_INGOT
+        4:
+          Base: DEEPSLATE_IRON_ORE
+          Result: IRON_INGOT
+        5:
+          Base: COPPER_ORE
+          Result: COPPER_INGOT
+        6:
+          Base: DEEPSLATE_COPPER_ORE
+          Result: COPPER_INGOT
+        7:
+          Base: GOLD_ORE
+          Result: GOLD_INGOT
+        8:
+          Base: DEEPSLATE_GOLD_ORE
+          Result: GOLD_INGOT
+        9:
+          Base: REDSTONE_ORE
+          Result: REDSTONE
+        10:
+          Base: DEEPSLATE_REDSTONE_ORE
+          Result: REDSTONE
+        11:
+          Base: EMERALD_ORE
+          Result: EMERALD
+        12:
+          Base: DEEPSLATE_EMERALD_ORE
+          Result: EMERALD
+        13:
+          Base: LAPIS_ORE
+          Result: LAPIS_LAZULI
+        14:
+          Base: DEEPSLATE_LAPIS_ORE
+          Result: LAPIS_LAZULI
+        15:
+          Base: DIAMOND_ORE
+          Result: DIAMOND
+        16:
+          Base: DEEPSLATE_DIAMOND_ORE
+          Result: DIAMOND
+        17:
+          Base: NETHER_GOLD_ORE
+          Result: GOLD_INGOT
+        18:
+          Base: NETHER_QUARTZ_ORE
+          Result: QUARTZ
+        19:
+          Base: ANCIENT_DEBRIS
+          Result: NETHERITE_SCRAP
   #Announcer module to send message to all player
   Announcer:
     Enable: true #If true the announcer module will work and send a message every X seconds

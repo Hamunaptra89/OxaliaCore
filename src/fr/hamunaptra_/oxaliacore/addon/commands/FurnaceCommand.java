@@ -1,77 +1,70 @@
 package fr.hamunaptra_.oxaliacore.addon.commands;
 
+import fr.hamunaptra_.oxaliacore.utils.ConfigManager;
+import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
 import fr.hamunaptra_.oxaliacore.utils.api.items.Items;
 import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
-import org.bukkit.Material;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class FurnaceCommand implements CommandExecutor {
 
+    ConfigManager Config = ConfigManager.getInstance();
     private static final Map<Material, Material> smelt = new HashMap<>();
-
-    static {
-        smelt.put(Material.COAL_ORE, Material.COAL);
-        smelt.put(Material.DEEPSLATE_COAL_ORE, Material.COAL);
-        smelt.put(Material.IRON_ORE, Material.IRON_INGOT);
-        smelt.put(Material.DEEPSLATE_IRON_ORE, Material.IRON_INGOT);
-        smelt.put(Material.COPPER_ORE, Material.COPPER_INGOT);
-        smelt.put(Material.DEEPSLATE_COPPER_ORE, Material.COPPER_INGOT);
-        smelt.put(Material.GOLD_ORE, Material.GOLD_INGOT);
-        smelt.put(Material.DEEPSLATE_GOLD_ORE, Material.GOLD_INGOT);
-        smelt.put(Material.REDSTONE_ORE, Material.REDSTONE);
-        smelt.put(Material.DEEPSLATE_REDSTONE_ORE, Material.REDSTONE);
-        smelt.put(Material.EMERALD_ORE, Material.EMERALD);
-        smelt.put(Material.DEEPSLATE_EMERALD_ORE, Material.EMERALD);
-        smelt.put(Material.LAPIS_ORE, Material.LAPIS_LAZULI);
-        smelt.put(Material.DEEPSLATE_LAPIS_ORE, Material.LAPIS_LAZULI);
-        smelt.put(Material.DIAMOND_ORE, Material.DIAMOND);
-        smelt.put(Material.DEEPSLATE_DIAMOND_ORE, Material.DIAMOND);
-        smelt.put(Material.NETHER_GOLD_ORE, Material.GOLD_INGOT);
-        smelt.put(Material.NETHER_QUARTZ_ORE, Material.QUARTZ);
-        smelt.put(Material.ANCIENT_DEBRIS, Material.NETHERITE_SCRAP);
-    }
-
+    String path = "Config.Commands.Furnace.";
     @Override
     public boolean onCommand(CommandSender s, Command cmd, String str, String[] args) {
-        if (!(s instanceof Player)) {
-            s.sendMessage("Cette commande ne peut être utilisée que par un joueur.");
-            return true;
-        }
         Player p = (Player) s;
+        Color Color = new Color(p);
 
-        for (ItemStack itemStack : p.getInventory().getContents()) {
-            if (itemStack != null) {
-                Material material = itemStack.getType();
+        boolean ifissmelting = false;
+
+        getSmeltedMaterial();
+
+        for (ItemStack i : p.getInventory().getContents()) {
+            if (i != null) {
+                Material material = i.getType();
 
                 if (smelt.containsKey(material)) {
-                    int itemCount = itemStack.getAmount();
-                    Material ingotMaterial = smelt.get(material);
-                    ItemStack smeltingResult = new ItemStack(ingotMaterial, itemCount);
+                    Material smelted = smelt.get(material);
 
-                    p.getInventory().removeItem(itemStack);
-                    p.getInventory().addItem(smeltingResult);
+                    p.getInventory().removeItem(i);
+                    p.getInventory().addItem(new Items(Material.getMaterial(String.valueOf(smelted)), i.getAmount()).im());
+
+                    ifissmelting = true;
                 }
             }
         }
 
-        p.sendMessage("Tous les minerais et lingots ont été cuits dans le fourneau.");
+        if (ifissmelting) {
+            p.sendMessage(Color.set(Config.getConfig().getString(path + "Success")));
+        } else {
+            p.sendMessage(Color.set(Config.getConfig().getString(path + "NoMaterial")));
+        }
+
         return true;
     }
+
+    private void getSmeltedMaterial() {
+
+        if (Config.getConfig().isConfigurationSection(path + "Article")) {
+            ConfigurationSection s = Config.getConfig().getConfigurationSection(path + "Article");
+
+            for (String key : s.getKeys(false)) {
+                Material base = Material.getMaterial(s.getString(key + ".Base"));
+                Material result = Material.getMaterial(s.getString(key + ".Result"));
+
+                if (base != null && result != null) {
+                    smelt.put(base, result);
+                }
+            }
+        }
+    }
 }
-
-
