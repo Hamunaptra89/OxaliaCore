@@ -34,6 +34,6 @@ public class LogManager {
 
     public void set(String key, Object value) {
         data.set(key, value);
-        save();
+        save(); 
     }
 }

@@ -5,13 +5,12 @@ import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
 import fr.hamunaptra_.oxaliacore.addon.commands.*;
 import fr.hamunaptra_.oxaliacore.addon.customitems.*;
-import fr.hamunaptra_.oxaliacore.addon.log.ClearLogCommand;
-import fr.hamunaptra_.oxaliacore.addon.log.LogsListener;
+import fr.hamunaptra_.oxaliacore.addon.log.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
+
 import fr.hamunaptra_.oxaliacore.utils.*;
 import fr.hamunaptra_.oxaliacore.utils.api.config.*;
 
-import fr.hamunaptra_.oxaliacore.utils.api.data.LogManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
@@ -59,6 +58,7 @@ public class EventManager {
 
         Rl(new LogsListener());
         Rc("deletelog", new ClearLogCommand());
+        Rc("viewlog", new ViewLogCommand());
     }
 
     private static void Rl(Listener l) {

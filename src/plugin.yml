@@ -1,5 +1,5 @@
 name: OxaliaCore
-version: 0.1.1-BETA
+version: 0.1.2-BETA
 author: Hamunaptra_
 api-version: 1.13
 
@@ -36,4 +36,6 @@ commands:
     aliases:
       - boutique
   votes:
+    description: Vote Command
+  viewlog:
     description: Vote Command
