@@ -1,12 +1,10 @@
 package fr.hamunaptra_.oxaliacore.addon.bank;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.data.*;
-
+import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
+import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
 import net.milkbowl.vault.economy.EconomyResponse;
-
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -22,9 +22,10 @@ public class BarBuy implements Listener {
     public void onInventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
         Color Color = new Color(p);
+
         String inv = e.getView().getTitle();
         String bar = "Bar.Item.";
-        String NoMoney = Color.set("Bar.Message.NoMoney");
+        String NoMoney = Color.set(Bar.getString("Bar.Message.NoMoney"));
 
         if (e.getCurrentItem() == null) return;
         if (e.getCurrentItem().getItemMeta() == null) return;

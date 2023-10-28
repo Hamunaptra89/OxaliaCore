@@ -5,6 +5,7 @@ import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
 import fr.hamunaptra_.oxaliacore.addon.commands.*;
 import fr.hamunaptra_.oxaliacore.addon.customitems.*;
+import fr.hamunaptra_.oxaliacore.addon.economie.*;
 import fr.hamunaptra_.oxaliacore.addon.log.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
 
@@ -41,7 +42,9 @@ public class EventManager {
         Rl(new BarListener());
         Rl(new BarBuy());
 
-        Rc("citems", new ItemCommand());
+        Rl(new BitCoinsListener());
+        BitCoinsUpdate.run();
+
         Rc("citems", new ItemCommand());
         Rl(new ItemListener());
 

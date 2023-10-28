@@ -43,27 +43,27 @@ public class Bank {
         bank = YamlConfiguration.loadConfiguration(file2);
     }
 
+    public static boolean getBoolean(String s) {
+        return bank.getBoolean(s);
+    }
+
     public static String getString(String path) {
         return bank.getString(path);
     }
 
-    public static boolean getBoolean(String path) {
-        return bank.getBoolean(path);
+    public static List<String> getStringList(String path) {
+        return bank.getStringList(path);
     }
 
     public static int getInt(String path) {
         return bank.getInt(path);
     }
 
-    public static double getDouble(String path) {
-        return bank.getDouble(path);
-    }
-
     public static ConfigurationSection getConfigurationSection(String path) {
         return bank.getConfigurationSection(path);
     }
 
-    public static List<String> getStringList(String path) {
-        return bank.getStringList(path);
+    public static double getDouble(String path) {
+        return bank.getDouble(path);
     }
 }

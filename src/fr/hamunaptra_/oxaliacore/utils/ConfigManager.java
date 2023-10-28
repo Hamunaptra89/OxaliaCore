@@ -12,11 +12,7 @@ import java.io.IOException;
 
 public class ConfigManager {
     static ConfigManager instance = new ConfigManager();
-
-    Plugin p;
-
     FileConfiguration config;
-
     File file;
 
     public static ConfigManager getInstance() {

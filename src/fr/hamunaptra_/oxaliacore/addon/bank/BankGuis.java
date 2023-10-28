@@ -1,10 +1,9 @@
 package fr.hamunaptra_.oxaliacore.addon.bank;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.items.*;
-
+import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
+import fr.hamunaptra_.oxaliacore.utils.api.items.Items;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
@@ -69,7 +68,7 @@ public class BankGuis implements Listener {
             for (String key : s.getKeys(false)) {
                 String path = bank + "Main.Item." + key;
                 if (Bank.getInt(path + ".Slot") >= 0 &&
-                        Bank.getInt(path + ".Slot") < Bank.getInt(path + "Main.Inv.Slot")) {
+                        Bank.getInt(path + ".Slot") < Bank.getInt(bank + "Main.Inv.Slot")) {
 
                     Items item = new Items(Material.getMaterial(Bank.getString(path + ".Material")), Bank.getInt(path + ".Amount"))
                             .setName(Color.set(Bank.getString(path + ".Name")))

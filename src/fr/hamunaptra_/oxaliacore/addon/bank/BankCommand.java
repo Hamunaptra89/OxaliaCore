@@ -1,14 +1,14 @@
 package fr.hamunaptra_.oxaliacore.addon.bank;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.data.*;
-
+import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
+import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
 import net.milkbowl.vault.economy.EconomyResponse;
-
 import org.bukkit.OfflinePlayer;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.text.DecimalFormat;
@@ -32,6 +32,11 @@ public class BankCommand implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("help")) {
             p.sendMessage(Color.set(Bank.getString(key + "Help")));
+        } else if (args[0].equalsIgnoreCase("depo")) {
+                BankGuis.BankMenuDeposit(p);
+
+        } else if (args[0].equalsIgnoreCase("with")) {
+                BankGuis.BankMenuWithdraw(p);
 
         } else if (args[0].equalsIgnoreCase("balance")) {
             double balance = Data.getBalance();
