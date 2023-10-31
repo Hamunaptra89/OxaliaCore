@@ -1,9 +1,9 @@
 package fr.hamunaptra_.oxaliacore.addon.shulker;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.*;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.chat.Color;
 
+import fr.hamunaptra_.oxaliacore.utils.files.ConfigManager;
 import org.bukkit.*;
 import org.bukkit.block.ShulkerBox;
 import org.bukkit.entity.HumanEntity;

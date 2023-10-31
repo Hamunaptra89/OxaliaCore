@@ -1,8 +1,8 @@
 package fr.hamunaptra_.oxaliacore.addon.bar;
 
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.items.*;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

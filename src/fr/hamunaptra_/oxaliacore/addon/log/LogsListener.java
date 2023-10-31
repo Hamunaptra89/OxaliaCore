@@ -1,8 +1,6 @@
 package fr.hamunaptra_.oxaliacore.addon.log;
 
-import fr.hamunaptra_.oxaliacore.utils.api.data.*;
-
-import org.bukkit.World;
+import fr.hamunaptra_.oxaliacore.utils.files.data.LogData;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,7 +16,7 @@ public class LogsListener implements Listener {
     public void onBlockPlace(BlockPlaceEvent e) {
         Player p = e.getPlayer();
         String block = e.getBlock().getType().name();
-        LogManager Log = new LogManager();
+        LogData Log = new LogData();
 
         int x = e.getBlock().getX();
         int y = e.getBlock().getY();
@@ -39,7 +37,7 @@ public class LogsListener implements Listener {
     public void onBlockBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
         String block = e.getBlock().getType().name();
-        LogManager Log = new LogManager();
+        LogData Log = new LogData();
 
         int x = e.getBlock().getX();
         int y = e.getBlock().getY();

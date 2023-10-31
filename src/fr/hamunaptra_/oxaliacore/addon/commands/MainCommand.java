@@ -1,6 +1,6 @@
 package fr.hamunaptra_.oxaliacore.addon.commands;
 
-import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.chat.Color;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;

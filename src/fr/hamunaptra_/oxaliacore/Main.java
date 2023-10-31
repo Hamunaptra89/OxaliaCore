@@ -1,6 +1,6 @@
 package fr.hamunaptra_.oxaliacore;
 
-import fr.hamunaptra_.oxaliacore.utils.api.placeholders.*;
+import fr.hamunaptra_.oxaliacore.utils.placeholders.*;
 
 import net.milkbowl.vault.economy.Economy;
 
@@ -12,7 +12,7 @@ public class Main extends JavaPlugin {
     public static Main getInstance() {
         return instance;
     }
-    public static Economy economy;
+    public static Economy eco;
 
     @Override
     public void onEnable() {
@@ -43,7 +43,7 @@ public class Main extends JavaPlugin {
             return false;
         }
 
-        economy = rsp.getProvider();
+        eco = rsp.getProvider();
         return true;
     }
 }

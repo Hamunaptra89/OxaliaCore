@@ -15,13 +15,13 @@ Bank:
     Message:
       Disable: "&6&lBanque &8&l▪ &cLes intérêts sont désactivés."
       NeedMoreMoney: "&6&lBanque &8&l▪ &cVous avez besoin de plus d'argent pour faire fonctionner les intêrets."
-      Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%interest% ⛃&a d'intérêt."
-      Time: "&6&lBanque &8&l▪ &aIl vous reste &e%min minutes &aet &e%sec secondes&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
+      Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%oxalia_bank_interest_money% ⛃&a d'intérêt."
+      Time: "&6&lBanque &8&l▪ &aIl vous reste %oxalia_bank_interest_time%&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
   Message:
     Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque (balance, deposit, withdraw, interest)"
     InvalidNumber: "&6&lBanque &8&l▪ &cLe montant indiqué n'est pas valide."
     BankLimit: "&6&lBanque &8&l▪ &cLe montant indiqué est supérieur à la limite de la banque. &8(&e%max&8)"
-    Balance: "&6&lBanque &8&l▪ &aVotre solde est de &e%amount% ⛃&a."
+    Balance: "&6&lBanque &8&l▪ &aVotre solde est de &e%%oxalia_bank_balance%% ⛃&a."
     NoMoney: "&6&lBanque &8&l▪ &cVous n'avez pas assez d'argent."
     Deposit:
       Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque deposit (montant)"
@@ -134,7 +134,7 @@ Bank:
             - '&a• &6Clique : &aQuitter le Menu&6.'
     Deposit:
       Inv:
-        Name: ':offset_-53::banks_54:'
+        Name: ':offset_-53::bank_deposit_54:'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -248,7 +248,7 @@ Bank:
             - '&a• &6Clique : &aRetour au menu principal&6.'
     Withdraw:
       Inv:
-        Name: ':offset_-53::banks_54:'
+        Name: ':offset_-53::bank_withdraw_54:'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:

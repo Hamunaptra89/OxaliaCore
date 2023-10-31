@@ -1,47 +1,40 @@
 package fr.hamunaptra_.oxaliacore.addon.bank;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.Color;
-import fr.hamunaptra_.oxaliacore.utils.api.config.Bank;
-import fr.hamunaptra_.oxaliacore.utils.api.data.DataManager;
-import net.milkbowl.vault.economy.EconomyResponse;
-import org.bukkit.OfflinePlayer;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
-import org.bukkit.entity.Player;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.*;
+import fr.hamunaptra_.oxaliacore.utils.files.data.*;
 
-import java.text.DecimalFormat;
+import net.milkbowl.vault.economy.EconomyResponse;
+
+import org.bukkit.OfflinePlayer;
+import org.bukkit.command.*;
+import org.bukkit.entity.Player;
 
 public class BankCommand implements CommandExecutor {
 
     String key = "Bank.Message.";
     String path = "Bank.Interest.";
-    DecimalFormat decimalFormat = new DecimalFormat("#.##");
 
     @Override
     public boolean onCommand(CommandSender s, Command command, String label, String[] args) {
-        Player p = (Player) s;
+        if (!(s instanceof Player p)) {
+            return false;
+        }
+
         Color Color = new Color(p);
-        DataManager Data = new DataManager(p);
+        BankData db = new BankData(p);
 
         if (args.length < 1) {
-            BankGuis.BankMenuMain(p);
+            BankGuis.BankMain(p);
             return true;
         }
 
         if (args[0].equalsIgnoreCase("help")) {
             p.sendMessage(Color.set(Bank.getString(key + "Help")));
-        } else if (args[0].equalsIgnoreCase("depo")) {
-                BankGuis.BankMenuDeposit(p);
-
-        } else if (args[0].equalsIgnoreCase("with")) {
-                BankGuis.BankMenuWithdraw(p);
 
         } else if (args[0].equalsIgnoreCase("balance")) {
-            double balance = Data.getBalance();
-            String formattedBalance = decimalFormat.format(balance);
-            p.sendMessage(Color.set(Bank.getString(key + "Balance").replaceAll("%amount%", formattedBalance)));
+            p.sendMessage(Color.set(Bank.getString(key + "Balance").replace("%amount%", Decimal.format(db.getBalance()))));
 
         } else if (args[0].equalsIgnoreCase("deposit")) {
             if (args.length < 2) {
@@ -53,20 +46,16 @@ public class BankCommand implements CommandExecutor {
                 double amount;
 
                 if (args[1].endsWith("%")) {
-                    double percentage = Double.parseDouble(args[1].replaceAll("%", "")) / 100.0;
-                    double playerBalance = Main.economy.getBalance((OfflinePlayer) p);
-                    amount = playerBalance * percentage;
+                    amount = Main.eco.getBalance((OfflinePlayer) p) * Double.parseDouble(args[1].replaceAll("%", "")) / 100.0;
                 } else {
                     amount = Double.parseDouble(args[1]);
                 }
 
-                if (amount > 0 && amount <= Main.economy.getBalance((OfflinePlayer) p)) {
-                    EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer) p, amount);
+                if (amount > 0 && amount <= Main.eco.getBalance((OfflinePlayer) p)) {
+                    EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer) p, amount);
                     if (r.transactionSuccess()) {
-                        Data.deposit(amount);
-
-                        String formattedAmount = decimalFormat.format(amount);
-                        p.sendMessage(Color.set(Bank.getString(key + "Deposit.Success").replaceAll("%amount%", formattedAmount)));
+                        db.deposit(amount);
+                        p.sendMessage(Color.set(Bank.getString(key + "Deposit.Success").replace("%amount%", Decimal.format(amount))));
 
                     } else {
                         p.sendMessage(Color.set(Bank.getString(key + "NoMoney")));
@@ -88,26 +77,24 @@ public class BankCommand implements CommandExecutor {
                 double amount;
 
                 if (args[1].endsWith("%")) {
-                    double percentage = Double.parseDouble(args[1].replaceAll("%", "")) / 100.0;
-                    amount = Data.getBalance() * percentage;
+                    amount = db.getBalance() * Double.parseDouble(args[1].replace("%", "")) / 100.0;
                 } else {
                     amount = Double.parseDouble(args[1]);
                 }
 
-                if (amount > 0 && amount <= Data.getBalance()) {
-                    Data.withdraw(amount);
+                if (amount > 0 && amount <= db.getBalance()) {
+                    db.withdraw(amount);
 
-                    EconomyResponse r = Main.economy.depositPlayer((OfflinePlayer) p, amount);
+                    EconomyResponse r = Main.eco.depositPlayer((OfflinePlayer) p, amount);
 
                     if (r.transactionSuccess()) {
-                        String formattedAmount = decimalFormat.format(amount);
-                        p.sendMessage(Color.set(Bank.getString(key + "Withdraw.Success").replaceAll("%amount%", formattedAmount)));
+                        p.sendMessage(Color.set(Bank.getString(key + "Withdraw.Success").replace("%amount%", Decimal.format(amount))));
 
                     } else {
                         p.sendMessage(Color.set(Bank.getString(key + "NoMoney")));
                     }
                 } else {
-                    p.sendMessage(Color.set(Bank.getString(key + "InvalidNumber")));
+                    p.sendMessage(Color.set(Bank.getString(key + "NoMoney")));
                 }
             } catch (NumberFormatException e) {
                 p.sendMessage(Color.set(Bank.getString(key + "InvalidNumber")));
@@ -115,19 +102,9 @@ public class BankCommand implements CommandExecutor {
 
         } else if (args[0].equalsIgnoreCase("interest")) {
             if (Bank.getBoolean(path + "Enable")) {
-                if (Data.getBalance() >= Bank.getInt(path + "Minimum")) {
-                    double interest = Data.getBalance() * Bank.getDouble(path + "Percent");
-                    int lastInterest = Data.getInterestTime();
-                    int hour = lastInterest / 3600;
-                    int min = (lastInterest % 3600) / 60;
-                    int sec = lastInterest % 60;
+                if (db.getBalance() >= Bank.getInt(path + "Minimum")) {
+                    p.sendMessage(Color.set(Bank.getString(path + "Message.Time")));
 
-                    String formattedInterest = decimalFormat.format(interest);
-                    p.sendMessage(Color.set(Bank.getString(path + "Message.Time")
-                            .replace("%hour", String.valueOf(hour))
-                            .replace("%min", String.valueOf(min))
-                            .replace("%sec", String.valueOf(sec))
-                            .replace("%interest%", formattedInterest)));
                 } else {
                     p.sendMessage(Color.set(Bank.getString(path + "Message.NeedMoreMoney")));
                 }

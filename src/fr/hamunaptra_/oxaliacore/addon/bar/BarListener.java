@@ -1,9 +1,9 @@
 package fr.hamunaptra_.oxaliacore.addon.bar;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.items.*;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
@@ -36,7 +36,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Beer.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Beer.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Beer.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Beer.Message.Win")));
                 }
 
@@ -50,7 +50,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Dodo.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Dodo.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Dodo.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Dodo.Message.Win")));
                 }
 
@@ -64,7 +64,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Wine.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Wine.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Wine.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Wine.Message.Win")));
                 }
 
@@ -78,7 +78,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Tequila.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Tequila.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Tequila.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Tequila.Message.Win")));
                 }
 
@@ -92,7 +92,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Vodka.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Vodka.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Vodka.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Vodka.Message.Win")));
                 }
 
@@ -106,7 +106,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Rhum.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Rhum.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Rhum.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Rhum.Message.Win")));
                 }
 
@@ -120,7 +120,7 @@ public class BarListener implements Listener {
                 p.getInventory().setItemInMainHand(new Items(Material.AIR).im());
 
                 if (rdm <= Bar.getInt(bar + "Whisky.Chance")) {
-                    Main.economy.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Whisky.Reward"));
+                    Main.eco.depositPlayer((OfflinePlayer) p, Bar.getInt(bar + "Whisky.Reward"));
                     p.sendMessage(Color.set(Bar.getString(bar + "Whisky.Message.Win")));
                 }
 

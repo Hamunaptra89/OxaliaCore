@@ -1,9 +1,9 @@
 package fr.hamunaptra_.oxaliacore.addon.bar;
 
 import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.items.*;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import net.milkbowl.vault.economy.EconomyResponse;
 
@@ -36,7 +36,7 @@ public class BarBuy implements Listener {
             e.setCancelled(true);
 
             if (getName.equals(Color.set(Bar.getString(bar + "Beer.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer) p, Bar.getInt(bar + "Beer.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer) p, Bar.getInt(bar + "Beer.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Beer.Message.Buy")));
@@ -57,7 +57,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Dodo.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Dodo.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Dodo.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Dodo.Message.Buy")));
@@ -78,7 +78,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Wine.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Wine.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Wine.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Wine.Message.Buy")));
@@ -99,7 +99,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Tequila.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Tequila.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Tequila.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Tequila.Message.Buy")));
@@ -120,7 +120,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Vodka.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Vodka.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Vodka.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Vodka.Message.Buy")));
@@ -141,7 +141,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Rhum.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Rhum.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Rhum.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Rhum.Message.Buy")));
@@ -162,7 +162,7 @@ public class BarBuy implements Listener {
             }
 
             if (getName.equals(Color.set(Bar.getString(bar + "Whisky.Name")))) {
-                EconomyResponse r = Main.economy.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Whisky.Price"));
+                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer)p, Bar.getInt(bar + "Whisky.Price"));
 
                 if (r.transactionSuccess()) {
                     p.sendMessage(Color.set(Bar.getString(bar + "Whisky.Message.Buy")));

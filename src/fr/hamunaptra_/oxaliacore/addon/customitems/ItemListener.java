@@ -1,8 +1,8 @@
 package fr.hamunaptra_.oxaliacore.addon.customitems;
 
-import fr.hamunaptra_.oxaliacore.utils.api.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-import fr.hamunaptra_.oxaliacore.utils.api.items.*;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.CItems;
+import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;

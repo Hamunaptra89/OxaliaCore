@@ -9,7 +9,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import java.util.Random;
 
 public class BitCoinsListener implements Listener {
-
+/*
     @EventHandler
     public void onBlockBreak(BlockBreakEvent e) {
         Player p = e.getPlayer();
@@ -24,4 +24,5 @@ public class BitCoinsListener implements Listener {
             p.sendMessage("Cela équivaut à $" + earnings);
         }
     }
+ */
 }

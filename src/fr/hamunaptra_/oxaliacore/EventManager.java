@@ -9,9 +9,10 @@ import fr.hamunaptra_.oxaliacore.addon.economie.*;
 import fr.hamunaptra_.oxaliacore.addon.log.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
 
-import fr.hamunaptra_.oxaliacore.utils.*;
-import fr.hamunaptra_.oxaliacore.utils.api.config.*;
-
+import fr.hamunaptra_.oxaliacore.utils.files.config.Bank;
+import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.files.config.CItems;
+import fr.hamunaptra_.oxaliacore.utils.files.ConfigManager;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.event.Listener;
