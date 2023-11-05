@@ -80,6 +80,7 @@ public class EventManager {
         TimedTask.run();
 
         Bukkit.getLogger().log(Level.INFO, "[OxaliaCore] Loading commands.");
+        Rc("oxaliacorereload", new MainCommand());
         Rc("chatclear", new MainCommand());
         Rc("discord", new MainCommand());
         Rc("link", new MainCommand());

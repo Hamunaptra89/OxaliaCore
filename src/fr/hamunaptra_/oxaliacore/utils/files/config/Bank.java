@@ -29,18 +29,23 @@ public class Bank {
     }
 
     public void copy() {
-        File file1 = new File(Main.getInstance().getDataFolder(), "bank.yml");
-        File file2 = new File(Main.getInstance().getDataFolder() + "/configs", "bank.yml");
-        if (!exists()) {
-            file2.delete();
+        File sourceFile = new File(Main.getInstance().getDataFolder(), "bank.yml");
+        File targetFile = new File(Main.getInstance().getDataFolder() + "/configs", "bank.yml");
+
+        if (!targetFile.exists()) {
             try {
-                FileUtils.copyFile(file1, file2);
+                FileUtils.copyFile(sourceFile, targetFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        file1.delete();
-        bank = YamlConfiguration.loadConfiguration(file2);
+
+        sourceFile.delete();
+        bank = YamlConfiguration.loadConfiguration(targetFile);
+    }
+
+    public void reload() {
+        bank = YamlConfiguration.loadConfiguration(this.file);
     }
 
     public static boolean getBoolean(String s) {

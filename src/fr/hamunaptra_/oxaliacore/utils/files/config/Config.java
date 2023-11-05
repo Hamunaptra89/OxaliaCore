@@ -41,6 +41,9 @@ public class Config {
         config = YamlConfiguration.loadConfiguration(file1);
     }
 
+    public void reload() {
+        config = YamlConfiguration.loadConfiguration(this.file);
+    }
 
     public static boolean getBoolean(String s) {
         return config.getBoolean(s);

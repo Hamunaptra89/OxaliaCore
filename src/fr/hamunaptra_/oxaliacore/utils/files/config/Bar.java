@@ -29,18 +29,23 @@ public class Bar {
     }
 
     public void copy() {
-        File file1 = new File(Main.getInstance().getDataFolder(), "bar.yml");
-        File file2 = new File(Main.getInstance().getDataFolder() + "/configs", "bar.yml");
-        if (!exists()) {
-            file2.delete();
+        File sourceFile = new File(Main.getInstance().getDataFolder(), "bar.yml");
+        File targetFile = new File(Main.getInstance().getDataFolder() + "/configs", "bar.yml");
+
+        if (!targetFile.exists()) {
             try {
-                FileUtils.copyFile(file1, file2);
+                FileUtils.copyFile(sourceFile, targetFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        file1.delete();
-        bar = YamlConfiguration.loadConfiguration(file2);
+
+        sourceFile.delete();
+        bar = YamlConfiguration.loadConfiguration(targetFile);
+    }
+
+    public void reload() {
+        bar = YamlConfiguration.loadConfiguration(this.file);
     }
 
     public static String getString(String path) {

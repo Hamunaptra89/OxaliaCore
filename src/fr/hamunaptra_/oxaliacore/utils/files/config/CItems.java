@@ -25,18 +25,23 @@ public class CItems {
     }
 
     public void copy() {
-        File file1 = new File(Main.getInstance().getDataFolder(), "citems.yml");
-        File file2 = new File(Main.getInstance().getDataFolder() + "/configs", "citems.yml");
-        if (!exists()) {
-            file2.delete();
+        File sourceFile = new File(Main.getInstance().getDataFolder(), "citems.yml");
+        File targetFile = new File(Main.getInstance().getDataFolder() + "/configs", "citems.yml");
+
+        if (!targetFile.exists()) {
             try {
-                FileUtils.copyFile(file1, file2);
+                FileUtils.copyFile(sourceFile, targetFile);
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        file1.delete();
-        citems = YamlConfiguration.loadConfiguration(file2);
+
+        sourceFile.delete();
+        citems = YamlConfiguration.loadConfiguration(targetFile);
+    }
+
+    public void reload() {
+        citems = YamlConfiguration.loadConfiguration(this.file);
     }
 
     public static String getString(String s) {
