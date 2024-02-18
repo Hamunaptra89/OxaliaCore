@@ -1,43 +1,41 @@
 package fr.hamunaptra_.oxaliacore.addon.customitems;
 
 import fr.hamunaptra_.oxaliacore.utils.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.files.config.CItems;
+import fr.hamunaptra_.oxaliacore.utils.files.config.*;
 import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.player.PlayerInteractEvent;
-import org.bukkit.event.player.PlayerItemConsumeEvent;
+import org.bukkit.event.player.*;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.potion.PotionEffect;
-import org.bukkit.potion.PotionEffectType;
+import org.bukkit.potion.*;
 
-import java.util.Map;
+import java.util.*;
 
 public class ItemListener implements Listener{
+
     String key = "CItems.";
 
     @EventHandler
     public void onConsume(PlayerItemConsumeEvent e) {
         Player p = e.getPlayer();
-        Color Color = new Color(p);
+        Color color = new Color(p);
 
         ItemStack i = e.getItem();
         String name = i.getItemMeta().getDisplayName();
 
         if (CItems.getBoolean(key + "Consume")) {
-            if (name.equals(Color.set(CItems.getString(key + "Potato.Name")))) {
+            if (name.equals(color.set(CItems.getString(key + "Potato.Name")))) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, CItems.getInt(key + "Potato.Time") * 20, 1));
-            } else if (name.equals(Color.set(CItems.getString(key + "Carrot.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Carrot.Name")))) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, CItems.getInt(key + "Carrot.Time") * 20, 2));
-            } else if (name.equals(Color.set(CItems.getString(key + "Bread.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Bread.Name")))) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, CItems.getInt(key + "Bread.Time") * 20, 2));
-            } else if (name.equals(Color.set(CItems.getString(key + "Cookie.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Cookie.Name")))) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, CItems.getInt(key + "Cookie.Time") * 20, 0));
-            } else if (name.equals(Color.set(CItems.getString(key + "Cake.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Cake.Name")))) {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, CItems.getInt(key + "Cake.Time") * 20, 2));
             }
         }
@@ -46,7 +44,7 @@ public class ItemListener implements Listener{
     @EventHandler
     public void onClick(PlayerInteractEvent e) {
         Player p = e.getPlayer();
-        Color Color = new Color(p);
+        Color color = new Color(p);
 
         if (e.getItem() == null) return;
         if (e.getItem().getItemMeta() == null) return;
@@ -55,23 +53,23 @@ public class ItemListener implements Listener{
             ItemStack i = e.getItem();
             String name = i.getItemMeta().getDisplayName();
 
-            if (name.equals(Color.set(CItems.getString(key + "Potato.Name")))) {
+            if (name.equals(color.set(CItems.getString(key + "Potato.Name")))) {
                 e.setCancelled(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, CItems.getInt(key + "Potato.Time") * 20, 1));
                 consumeItem(p, 1, i);
-            } else if (name.equals(Color.set(CItems.getString(key + "Carrot.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Carrot.Name")))) {
                 e.setCancelled(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, CItems.getInt(key + "Carrot.Time") * 20, 2));
                 consumeItem(p, 1, i);
-            } else if (name.equals(Color.set(CItems.getString(key + "Bread.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Bread.Name")))) {
                 e.setCancelled(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, CItems.getInt(key + "Bread.Time") * 20, 2));
                 consumeItem(p, 1, i);
-            } else if (name.equals(Color.set(CItems.getString(key + "Cookie.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Cookie.Name")))) {
                 e.setCancelled(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, CItems.getInt(key + "Cookie.Time") * 20, 0));
                 consumeItem(p, 1, i);
-            } else if (name.equals(Color.set(CItems.getString(key + "Cake.Name")))) {
+            } else if (name.equals(color.set(CItems.getString(key + "Cake.Name")))) {
                 e.setCancelled(true);
                 p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, CItems.getInt(key + "Cake.Time") * 20, 2));
                 consumeItem(p, 1, i);

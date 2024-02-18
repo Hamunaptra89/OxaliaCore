@@ -15,13 +15,13 @@ Bank:
     Message:
       Disable: "&6&lBanque &8&l▪ &cLes intérêts sont désactivés."
       NeedMoreMoney: "&6&lBanque &8&l▪ &cVous avez besoin de plus d'argent pour faire fonctionner les intêrets."
-      Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%oxalia_bank_interest_money% ⛃&a d'intérêt."
-      Time: "&6&lBanque &8&l▪ &aIl vous reste %oxalia_bank_interest_time%&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
+      Get: "&6&lBanque &8&l▪ &aVous avez reçu &e%oxaliacore_bank_interest_money% ⛃&a d'intérêt."
+      Time: "&6&lBanque &8&l▪ &aIl vous reste %oxaliacore_bank_interest_time%&a. &8(&aIntérêt: &e%interest% ⛃&8)&a."
   Message:
     Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque (balance, deposit, withdraw, interest)"
     InvalidNumber: "&6&lBanque &8&l▪ &cLe montant indiqué n'est pas valide."
     BankLimit: "&6&lBanque &8&l▪ &cLe montant indiqué est supérieur à la limite de la banque. &8(&e%max&8)"
-    Balance: "&6&lBanque &8&l▪ &aVotre solde est de &e%%oxalia_bank_balance%% ⛃&a."
+    Balance: "&6&lBanque &8&l▪ &aVotre solde est de &e%oxaliacore_bank_balance% ⛃&a."
     NoMoney: "&6&lBanque &8&l▪ &cVous n'avez pas assez d'argent."
     Deposit:
       Help: "&6&lBanque &8&l▪ &7Utilisation: &b/banque deposit (montant)"
@@ -108,9 +108,9 @@ Bank:
             - ' &7votre &aargent &7en le &amettant &7bien au &achaud&7.'
             - ' &7Pour que les &ainterêts marche &7il vous faut un &aminimum &7de &e10000 ⛁'
             - ''
-            - ' &7▪ &bSolde en Banque &7➠ &e%oxalia_bank_balance% ⛁'
-            - ' &7▪ &bProchain interêt &7➠ &e%oxalia_bank_interest_time%'
-            - ' &7▪ &bGain des interêts &7➠ &e%oxalia_bank_interest_money% ⛁'
+            - ' &7▪ &bSolde en Banque &7➠ &e%oxaliacore_bank_balance% ⛁'
+            - ' &7▪ &bProchain interêt &7➠ &e%oxaliacore_bank_interest_time%'
+            - ' &7▪ &bGain des interêts &7➠ &e%oxaliacore_bank_interest_money% ⛁'
             - ''
             - '&7Les &aintérêts &7sont de &b2% &8(&aEx: &7Vous &agagnerez &e2 ⛃&7,'
             - '&7tout les &a3 heures&7, si vous avez &adéposé 100 ⛃&7.&8)'
@@ -196,7 +196,7 @@ Bank:
             - ' &7Cliquer pour déposer 25%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_25% ⛃'
+            - ' &7▪ &bArgent à déposer : &e%oxaliacore_bank_deposit_25% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 25%"
@@ -210,7 +210,7 @@ Bank:
             - ' &7Cliquer pour déposer 50%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_50% ⛃'
+            - ' &7▪ &bArgent à déposer : &e%oxaliacore_bank_deposit_50% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 50%"
@@ -224,7 +224,7 @@ Bank:
             - ' &7Cliquer pour déposer 100%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à déposer : &e%oxalia_bank_deposit_100% ⛃'
+            - ' &7▪ &bArgent à déposer : &e%oxaliacore_bank_deposit_100% ⛃'
             - ''
             - '&a• &6Clique : &aDéposer votre argent&6.'
           Command: "bank deposit 100%"
@@ -310,7 +310,7 @@ Bank:
             - ' &7Cliquer pour retirer 25%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_25% ⛃'
+            - ' &7▪ &bArgent à retirer : &e%oxaliacore_bank_withdraw_25% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 25%"
@@ -324,7 +324,7 @@ Bank:
             - ' &7Cliquer pour retirer 50%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_50% ⛃'
+            - ' &7▪ &bArgent à retirer : &e%oxaliacore_bank_withdraw_50% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 50%"
@@ -338,7 +338,7 @@ Bank:
             - ' &7Cliquer pour retirer 100%'
             - ' &7de votre argent en banque.'
             - ''
-            - ' &7▪ &bArgent à retirer : &e%oxalia_bank_withdraw_100% ⛃'
+            - ' &7▪ &bArgent à retirer : &e%oxaliacore_bank_withdraw_100% ⛃'
             - ''
             - '&a• &6Clique : &aRetirer votre argent&6.'
           Command: "bank withdraw 100%"

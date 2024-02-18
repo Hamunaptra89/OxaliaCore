@@ -2,14 +2,13 @@ package fr.hamunaptra_.oxaliacore.utils.files.config;
 
 import fr.hamunaptra_.oxaliacore.Main;
 
-import org.apache.commons.io.FileUtils;
-
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import org.apache.commons.io.FileUtils;
+
+import java.io.*;
+import java.util.*;
 
 public class Config {
 

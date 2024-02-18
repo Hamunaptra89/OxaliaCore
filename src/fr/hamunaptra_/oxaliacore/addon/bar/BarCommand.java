@@ -1,7 +1,7 @@
 package fr.hamunaptra_.oxaliacore.addon.bar;
 
 import fr.hamunaptra_.oxaliacore.utils.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.files.config.*;
 import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import org.bukkit.Bukkit;
@@ -9,21 +9,19 @@ import org.bukkit.Material;
 import org.bukkit.command.*;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
+import org.bukkit.inventory.*;
 import org.bukkit.potion.PotionType;
 
 public class BarCommand implements CommandExecutor {
     String inv_path = "Bar.Inv.";
 
     @Override
-    public boolean onCommand(CommandSender sr, Command cmd, String label, String[] args) {
-        Player p = (Player) sr;
-        Color Color = new Color(p);
-
-        if (!(sr instanceof Player)) {
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player p)) {
             return false;
         }
+
+        Color Color = new Color(p);
 
         if (p.hasPermission(Bar.getString(inv_path + "Permission"))) {
             Inventory inv = Bukkit.createInventory(null, Bar.getInt(inv_path + "Slot"), Color.set(Bar.getString(inv_path + "Name")));

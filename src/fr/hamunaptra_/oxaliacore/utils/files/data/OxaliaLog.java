@@ -2,13 +2,10 @@ package fr.hamunaptra_.oxaliacore.utils.files.data;
 
 import fr.hamunaptra_.oxaliacore.Main;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.*;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.IOException;
-
+import java.io.*;
 public class OxaliaLog {
 
     private FileConfiguration data;

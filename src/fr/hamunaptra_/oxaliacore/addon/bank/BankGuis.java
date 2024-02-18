@@ -15,7 +15,19 @@ public class BankGuis implements Listener {
 
     public static String BANK_KEY = "Bank.Guis.";
 
-    public static void openBankGui(Player p, String guiType) {
+    public static void BankMain(Player p) {
+        BankGui(p, "Main");
+    }
+
+    public static void BankDeposit(Player p) {
+        BankGui(p, "Deposit");
+    }
+
+    public static void BankWithdraw(Player p) {
+        BankGui(p, "Withdraw");
+    }
+
+    public static void BankGui(Player p, String guiType) {
         Color color = new Color(p);
         String guiKey = BANK_KEY + guiType;
 
@@ -43,17 +55,5 @@ public class BankGuis implements Listener {
         }
 
         p.openInventory(inv);
-    }
-
-    public static void BankMain(Player p) {
-        openBankGui(p, "Main");
-    }
-
-    public static void BankDeposit(Player p) {
-        openBankGui(p, "Deposit");
-    }
-
-    public static void BankWithdraw(Player p) {
-        openBankGui(p, "Withdraw");
     }
 }

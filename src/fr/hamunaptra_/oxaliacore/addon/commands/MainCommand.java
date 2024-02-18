@@ -1,103 +1,98 @@
 package fr.hamunaptra_.oxaliacore.addon.commands;
 
-import fr.hamunaptra_.oxaliacore.Main;
-import fr.hamunaptra_.oxaliacore.utils.chat.Color;
+import fr.hamunaptra_.oxaliacore.utils.chat.*;
+import fr.hamunaptra_.oxaliacore.utils.files.config.*;
+import fr.hamunaptra_.oxaliacore.utils.items.*;
 
-import fr.hamunaptra_.oxaliacore.utils.files.config.Bank;
-import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
-import fr.hamunaptra_.oxaliacore.utils.files.config.CItems;
-import fr.hamunaptra_.oxaliacore.utils.files.config.Config;
-import org.bukkit.Bukkit;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandExecutor;
-import org.bukkit.command.CommandSender;
+import org.bukkit.Material;
+import org.bukkit.command.*;
+import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
-import java.util.logging.Level;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainCommand implements CommandExecutor {
 
-    @Override
-    public boolean onCommand(CommandSender s, Command cmd, String str, String[] args) {
-        Player p = (Player)s;
-        Color color = new Color(p);
+    private static final Map<Material, Material> smelt = new HashMap<>();
 
-        if (cmd.getName().equalsIgnoreCase("chatclear")) {
-            if (p.hasPermission("OxaliaCore.Admin")) {
-                for (int i = 0; i < 250; ++i) {
-                    Bukkit.broadcastMessage(" ");
-                }
-            }
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (!(sender instanceof Player p)) {
             return false;
         }
 
+        Color color = new Color(p);
+
         if (cmd.getName().equalsIgnoreCase("discord")) {
-            color.formatted(p, "Config.Commands.Discord");
+            color.formatted("Config.Commands.Discord");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("link")) {
-            color.formatted(p, "Config.Commands.Link");
+            color.formatted("Config.Commands.Link");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("site")) {
-            color.formatted(p, "Config.Commands.Site");
+            color.formatted("Config.Commands.Site");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("store")) {
-            color.formatted(p, "Config.Commands.Store");
+            color.formatted("Config.Commands.Store");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("votes")) {
-            color.formatted(p, "Config.Commands.Vote");
+            color.formatted("Config.Commands.Vote");
             return false;
         }
 
-        if (cmd.getName().equalsIgnoreCase("clearreloadall")) {
-            if (p.hasPermission("OxaliaCore.Admin")) {
-                p.getServer().dispatchCommand(s, "plugman reload ClearLag");
-                p.getServer().dispatchCommand(s, "plugman reload ClearLagTimer");
-            }
-            return false;
-        }
+        if (cmd.getName().equalsIgnoreCase("furnace")) {
+            boolean ifissmelting = false;
+            getSmeltedMaterial();
 
-        if (cmd.getName().equalsIgnoreCase("chatclear")) {
-            if (p.hasPermission("OxaliaCore.Admin")) {
-                for (int i = 0; i < 250; ++i) {
-                    Bukkit.broadcastMessage(" ");
+            for (ItemStack i : p.getInventory().getContents()) {
+                if (i != null) {
+                    Material material = i.getType();
+
+                    if (smelt.containsKey(material)) {
+                        Material smelted = smelt.get(material);
+
+                        p.getInventory().removeItem(i);
+                        p.getInventory().addItem(new Items(Material.getMaterial(String.valueOf(smelted)), i.getAmount()).im());
+
+                        ifissmelting = true;
+                    }
                 }
             }
-            return false;
-        }
 
-        if (cmd.getName().equalsIgnoreCase("oxaliacorereload")) {
-            if (p.hasPermission("OxaliaCore.Admin")) {
-                p.sendMessage(color.set(Config.getString("Config.Messages.Reload")));
-
-                Bukkit.getLogger().log(Level.INFO, "---------------[OxaliaCore]---------------");
-                Bukkit.getLogger().log(Level.INFO, "");
-                Bukkit.getLogger().log(Level.INFO, "[OxaliaCore] Reloading OxaliaCore/config.yml configuration file.");
-                Config config = new Config();
-                config.reload();
-                Bukkit.getLogger().log(Level.INFO, "[OxaliaCore] Reloading OxaliaCore/configs/bank.yml configuration file.");
-                Bank bank = new Bank();
-                bank.reload();
-                Bukkit.getLogger().log(Level.INFO, "[OxaliaCore] Reloading OxaliaCore/configs/bar.yml configuration file.");
-                Bar bar = new Bar();
-                bar.reload();
-                Bukkit.getLogger().log(Level.INFO, "[OxaliaCore] Reloading OxaliaCore/configs/citems.yml configuration file.");
-                CItems cItems = new CItems();
-                cItems.reload();
-                Bukkit.getLogger().log(Level.INFO, "");
-                Bukkit.getLogger().log(Level.INFO, "---------------[OxaliaCore]---------------");
-
+            if (ifissmelting) {
+                p.sendMessage(color.set(Config.getString("Config.Commands.Furnace.Success")));
+            } else {
+                p.sendMessage(color.set(Config.getString("Config.Commands.Furnace.NoMaterial")));
             }
-            return false;
+
+            return true;
         }
 
         return true;
+    }
+
+    private void getSmeltedMaterial() {
+        if (Config.isString("Config.Commands.Furnace.Article")) {
+            ConfigurationSection s = Config.getConfigurationSection("Config.Commands.Furnace.Article");
+
+            for (String key : s.getKeys(false)) {
+                Material base = Material.getMaterial(s.getString(key + ".Base"));
+                Material result = Material.getMaterial(s.getString(key + ".Result"));
+
+                if (base != null && result != null) {
+                    smelt.put(base, result);
+                }
+            }
+        }
     }
 }

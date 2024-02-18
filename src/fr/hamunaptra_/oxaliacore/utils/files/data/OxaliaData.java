@@ -3,12 +3,10 @@ package fr.hamunaptra_.oxaliacore.utils.files.data;
 import fr.hamunaptra_.oxaliacore.Main;
 import fr.hamunaptra_.oxaliacore.utils.files.config.*;
 
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.*;
 import org.bukkit.entity.Player;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 public class OxaliaData {
 
@@ -16,7 +14,7 @@ public class OxaliaData {
     private final File file;
 
     public OxaliaData(Player p) {
-        this.file = new File(Main.getInstance().getDataFolder() + "/data", p.getName() + ".yml");
+        this.file = new File(Main.getInstance().getDataFolder() + "/data" + "/bank", p.getName() + ".yml");
         this.data = YamlConfiguration.loadConfiguration(file);
 
         if (!this.file.exists()) {

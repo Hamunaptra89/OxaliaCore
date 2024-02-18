@@ -7,9 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.ConfigurationSection;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TimedTask {
     private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");

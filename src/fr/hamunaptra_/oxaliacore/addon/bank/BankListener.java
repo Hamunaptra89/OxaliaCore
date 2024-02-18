@@ -9,19 +9,14 @@ import net.milkbowl.vault.economy.EconomyResponse;
 
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.entity.PlayerDeathEvent;
-import org.bukkit.event.inventory.InventoryClickEvent;
-import org.bukkit.event.inventory.InventoryCloseEvent;
-import org.bukkit.event.inventory.InventoryOpenEvent;
+import org.bukkit.event.inventory.*;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.scheduler.BukkitRunnable;
-import org.bukkit.scheduler.BukkitTask;
+import org.bukkit.scheduler.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class BankListener implements Listener {
 
@@ -118,78 +113,76 @@ public class BankListener implements Listener {
         Player p = e.getPlayer();
         Color Color = new Color(p);
         OxaliaData Data = new OxaliaData(p);
+        String message = e.getMessage();
 
         if (DepositNumberMap.getOrDefault(p, false)) {
-            try {
-                double deposit = Double.parseDouble(e.getMessage());
-                double limit = Bank.getDouble("Bank.Maximum");
+            double amount = parseDepositAmount(message, p);
 
-                if (deposit <= 0) {
-                    p.sendMessage(Color.set(Bank.getString(msg + "InvalidNumber")));
-                    e.setCancelled(true);
-                    DepositNumberMap.put(p, false);
-                    return;
-                }
-
-                if (deposit > limit) {
-                    p.sendMessage(Color.set(Bank.getString(msg + "BankLimit").replaceAll("%max", String.valueOf(limit))));
-                    e.setCancelled(true);
-                    DepositNumberMap.put(p, false);
-                    return;
-                }
-
-                if (Main.eco.getBalance(p) < deposit) {
-                    p.sendMessage(Color.set(Bank.getString(msg + "NoMoney")));
-                    e.setCancelled(true);
-                    DepositNumberMap.put(p, false);
-                    return;
-                }
-
-                EconomyResponse r = Main.eco.withdrawPlayer((OfflinePlayer) p, deposit);
+            if (amount > 0 && amount <= Main.eco.getBalance(p) && amount > Bank.getDouble("Bank.Maximum")) {
+                EconomyResponse r = Main.eco.depositPlayer((OfflinePlayer) p, amount);
 
                 if (r.transactionSuccess()) {
-                    DepositNumber.put(p, deposit);
-                    Data.deposit(deposit);
-                    p.sendMessage(Color.set(Bank.getString(msg + "Deposit.Success").replaceAll("%amount%", String.valueOf(deposit))));
+                    DepositNumber.put(p, amount);
+                    Data.deposit(amount);
+                    p.sendMessage(Color.set(Bank.getString(msg + "Deposit.Success").replaceAll("%amount%", String.valueOf(Decimal.format(amount)))));
+                } else {
+                    p.sendMessage(Color.set(Bank.getString(msg + "NoMoney")));
                 }
-            } catch (NumberFormatException f) {
-                p.sendMessage(Color.set(Bank.getString(msg + "InvalidNumber")));
             }
-            DepositNumberMap.put(p, false);
+            resetTransactionFlags(p);
             e.setCancelled(true);
         }
 
         if (WithDrawNumberMap.getOrDefault(p, false)) {
-            try {
-                double withdraw = Double.parseDouble(e.getMessage());
+            double amount = parseWithdrawAmount(message, Data);
+            double balance = Data.getBalance();
 
-                if (withdraw <= 0) {
-                    p.sendMessage(Color.set(Bank.getString(msg + "InvalidNumber")));
-                    e.setCancelled(true);
-                    WithDrawNumberMap.put(p, false);
-                    return;
-                }
-
-                if (withdraw > Data.getBalance()) {
-                    p.sendMessage(Color.set(Bank.getString(msg + "NoMoney")));
-                    e.setCancelled(true);
-                    WithDrawNumberMap.put(p, false);
-                    return;
-                }
-
-                EconomyResponse r = Main.eco.depositPlayer((OfflinePlayer) p, withdraw);
+            if (amount > 0 && amount <= balance) {
+                EconomyResponse r = Main.eco.depositPlayer((OfflinePlayer) p, amount);
 
                 if (r.transactionSuccess()) {
-                    WithDrawNumber.put(p, withdraw);
-                    Data.withdraw(withdraw);
-                    p.sendMessage(Color.set(Bank.getString(msg + "Withdraw.Success").replaceAll("%amount%", String.valueOf(withdraw))));
+                    WithDrawNumber.put(p, amount);
+                    Data.withdraw(amount);
+                    p.sendMessage(Color.set(Bank.getString(msg + "Withdraw.Success").replaceAll("%amount%", String.valueOf(Decimal.format(amount)))));
+                } else {
+                    p.sendMessage(Color.set(Bank.getString(msg + "NoMoney")));
                 }
-            } catch (NumberFormatException f) {
-                p.sendMessage(Color.set(Bank.getString(msg + "InvalidNumber")));
             }
-            WithDrawNumberMap.put(p, false);
+            resetTransactionFlags(p);
             e.setCancelled(true);
         }
+    }
+
+    private double parseDepositAmount(String amount, Player p) {
+        if (amount.endsWith("%")) {
+            return Main.eco.getBalance(p) * Double.parseDouble(amount.replace("%", "")) / 100.0;
+        } else {
+            try {
+                double parsedAmount = Double.parseDouble(amount);
+                return Math.round(parsedAmount * 100.0) / 100.0;
+            } catch (NumberFormatException e) {
+                return 0.0;
+            }
+        }
+    }
+
+    private double parseWithdrawAmount(String amount, OxaliaData data) {
+        if (amount.endsWith("%")) {
+            double bankbalance = data.getBalance();
+            return bankbalance * Double.parseDouble(amount.replace("%", "")) / 100.0;
+        } else {
+            try {
+                double parsedAmount = Double.parseDouble(amount);
+                return Math.round(parsedAmount * 100.0) / 100.0;
+            } catch (NumberFormatException e) {
+                return 0.0;
+            }
+        }
+    }
+
+    private void resetTransactionFlags(Player p) {
+        DepositNumberMap.put(p, false);
+        WithDrawNumberMap.put(p, false);
     }
 
     private final Map<Player, BukkitTask> UpdateGui = new HashMap<>();
@@ -222,7 +215,7 @@ public class BankListener implements Listener {
                     BankGuis.BankWithdraw(p);
                 }
             }
-        }.runTaskTimer(Main.getInstance(), 10, 10);
+        }.runTaskTimer(Main.getInstance(), 10, 20);
 
         UpdateGui.put(p, task);
     }

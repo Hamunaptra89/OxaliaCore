@@ -1,8 +1,6 @@
 package fr.hamunaptra_.oxaliacore.utils.chat;
 
-import java.util.Map;
-import java.util.NavigableMap;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Decimal {
     private static final NavigableMap<Double, String> suffixes = new TreeMap<>();

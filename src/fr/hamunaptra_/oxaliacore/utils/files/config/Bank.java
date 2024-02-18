@@ -7,9 +7,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Bank {
 
@@ -19,13 +18,6 @@ public class Bank {
     public Bank() {
         this.file = new File(Main.getInstance().getDataFolder() + "/configs", "bank.yml");
         bank = YamlConfiguration.loadConfiguration(this.file);
-    }
-
-    public boolean exists() {
-        if (this.file.exists()) {
-            return true;
-        }
-        return false;
     }
 
     public void copy() {

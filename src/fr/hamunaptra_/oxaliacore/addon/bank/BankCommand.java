@@ -50,8 +50,10 @@ public class BankCommand implements CommandExecutor {
         }
 
         try {
-            double amount = parseAmount(args[1], p);
-            if (amount > 0 && amount <= Main.eco.getBalance(p)) {
+            double amount = parseDepositAmount(args[1], p);
+            double bank_limit = Bank.getDouble("Bank.Maximum");
+
+            if (amount > 0 && amount <= Main.eco.getBalance(p) && (data.getBalance() + amount) <= bank_limit) {
                 EconomyResponse response = Main.eco.withdrawPlayer(p, amount);
                 if (response.transactionSuccess()) {
                     data.deposit(amount);
@@ -74,10 +76,12 @@ public class BankCommand implements CommandExecutor {
         }
 
         try {
-            double amount = parseAmount(args[1], p);
+            double amount = parseWithdrawAmount(args[1], data);
+
             if (amount > 0 && amount <= data.getBalance()) {
                 data.withdraw(amount);
                 EconomyResponse response = Main.eco.depositPlayer(p, amount);
+
                 if (response.transactionSuccess()) {
                     p.sendMessage(color.set(Bank.getString(BANK_KEY + "Withdraw.Success").replace("%amount%", Decimal.format(amount))));
                 } else {
@@ -103,11 +107,30 @@ public class BankCommand implements CommandExecutor {
         }
     }
 
-    private double parseAmount(String amount, Player p) {
+    private double parseDepositAmount(String amount, Player p) {
         if (amount.endsWith("%")) {
             return Main.eco.getBalance(p) * Double.parseDouble(amount.replace("%", "")) / 100.0;
         } else {
-            return Double.parseDouble(amount);
+            try {
+                double parsedAmount = Double.parseDouble(amount);
+                return Math.round(parsedAmount * 100.0) / 100.0;
+            } catch (NumberFormatException e) {
+                return 0.0;
+            }
+        }
+    }
+
+    private double parseWithdrawAmount(String amount, OxaliaData data) {
+        if (amount.endsWith("%")) {
+            double bankbalance = data.getBalance();
+            return bankbalance * Double.parseDouble(amount.replace("%", "")) / 100.0;
+        } else {
+            try {
+                double parsedAmount = Double.parseDouble(amount);
+                return Math.round(parsedAmount * 100.0) / 100.0;
+            } catch (NumberFormatException e) {
+                return 0.0;
+            }
         }
     }
 }

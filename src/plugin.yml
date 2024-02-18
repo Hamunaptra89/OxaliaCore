@@ -1,6 +1,6 @@
 name: OxaliaCore
-version: 0.1.5.1-BETA
-author: Hamunaptra_
+version: 0.1.6-BETA
+author: Halbrand__
 api-version: 1.13
 
 main: fr.hamunaptra_.oxaliacore.Main
@@ -39,5 +39,5 @@ commands:
     description: Vote Command
   viewlog:
     description: Vote Command
-  oxaliacorereload:
+  oxaliacore:
     description: Reload plugin Command

@@ -2,7 +2,7 @@ package fr.hamunaptra_.oxaliacore.addon.bar;
 
 import fr.hamunaptra_.oxaliacore.Main;
 import fr.hamunaptra_.oxaliacore.utils.chat.*;
-import fr.hamunaptra_.oxaliacore.utils.files.config.Bar;
+import fr.hamunaptra_.oxaliacore.utils.files.config.*;
 import fr.hamunaptra_.oxaliacore.utils.items.*;
 
 import net.milkbowl.vault.economy.EconomyResponse;
@@ -10,8 +10,7 @@ import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+import org.bukkit.event.*;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.potion.PotionType;

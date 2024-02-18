@@ -6,9 +6,8 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import org.apache.commons.io.FileUtils;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class CItems {
 
@@ -18,10 +17,6 @@ public class CItems {
     public CItems() {
         this.file = new File(Main.getInstance().getDataFolder() + "/configs", "citems.yml");
         citems = YamlConfiguration.loadConfiguration(this.file);
-    }
-
-    public boolean exists() {
-        return this.file.exists();
     }
 
     public void copy() {
