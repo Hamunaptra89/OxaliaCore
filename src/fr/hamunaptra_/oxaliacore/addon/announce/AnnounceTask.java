@@ -20,10 +20,9 @@ public class AnnounceTask {
                 }
 
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    Color Color = new Color(p);
-
                     String message = Config.getStringList(path + "Messages").get(messages);
                     String formattedMessage = Color.set(message);
+
                     p.sendMessage(formattedMessage);
                 }
 

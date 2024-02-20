@@ -21,8 +21,6 @@ public class BarCommand implements CommandExecutor {
             return false;
         }
 
-        Color Color = new Color(p);
-
         if (p.hasPermission(Bar.getString(inv_path + "Permission"))) {
             Inventory inv = Bukkit.createInventory(null, Bar.getInt(inv_path + "Slot"), Color.set(Bar.getString(inv_path + "Name")));
 

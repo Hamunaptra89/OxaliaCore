@@ -20,7 +20,6 @@ public class BarBuy implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
-        Color Color = new Color(p);
 
         String inv = e.getView().getTitle();
         String bar = "Bar.Item.";

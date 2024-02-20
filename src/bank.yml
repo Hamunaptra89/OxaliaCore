@@ -34,7 +34,7 @@ Bank:
   Guis:
     Main:
       Inv:
-        Name: ':offset_-53::bank_54:'
+        Name: '&6&lBanque &8&l▪ &aMenu Principal'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -110,7 +110,7 @@ Bank:
             - ''
             - ' &7▪ &bSolde en Banque &7➠ &e%oxaliacore_bank_balance% ⛁'
             - ' &7▪ &bProchain interêt &7➠ &e%oxaliacore_bank_interest_time%'
-            - ' &7▪ &bGain des interêts &7➠ &e%oxaliacore_bank_interest_money% ⛁'
+            - ' &7▪ &bGain des interêts &7➠ &e%oxaliacore_bank_interest_amount% ⛁'
             - ''
             - '&7Les &aintérêts &7sont de &b2% &8(&aEx: &7Vous &agagnerez &e2 ⛃&7,'
             - '&7tout les &a3 heures&7, si vous avez &adéposé 100 ⛃&7.&8)'
@@ -134,7 +134,7 @@ Bank:
             - '&a• &6Clique : &aQuitter le Menu&6.'
     Deposit:
       Inv:
-        Name: ':offset_-53::bank_deposit_54:'
+        Name: '&6&lBanque &8&l▪ &aDéposer de l''argent'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:
@@ -248,7 +248,7 @@ Bank:
             - '&a• &6Clique : &aRetour au menu principal&6.'
     Withdraw:
       Inv:
-        Name: ':offset_-53::bank_withdraw_54:'
+        Name: '&6&lBanque &8&l▪ &aRetirer de l''argent'
         Slot: 54
         Permission: OxaliaCore.Bank.Open
       Item:

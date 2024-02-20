@@ -4,7 +4,6 @@ Config:
     TimedTask: true
     Bank: true
     Bar: true
-    Bitcoin: false
     CItems: true
     Shulker: true
     Logs: false

@@ -8,6 +8,7 @@ import fr.hamunaptra_.oxaliacore.utils.files.data.*;
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.NotNull;
 
 public class PlaceHolderAPI extends PlaceholderExpansion {
 
@@ -27,34 +28,51 @@ public class PlaceHolderAPI extends PlaceholderExpansion {
     }
 
     @Override
-    public String onPlaceholderRequest(Player p, String s) {
+    public String onPlaceholderRequest(Player p, @NotNull String s) {
         if (p == null) {
             return "";
         }
 
-        OxaliaData Data = new OxaliaData(p);
+        OxaliaData data = new OxaliaData(p);
 
         if (s.equals("bank_balance")) {
-            return String.valueOf(Decimal.format(Data.getBalance()));
+            return String.valueOf(Decimal.format(data.getBalance()));
         }
 
         if (s.equals("bank_interest_time")) {
-            long time = Data.getInterestTime();
+            long time = data.getInterestTime();
             long min = (time % 3600) / 60;
             long sec = time % 60;
-
-            Color Color = new Color(p);
 
             return (Color.set(Bank.getString("Bank.PlaceHolders.Interest.Time"))
                     .replace("%min", String.valueOf(min))
                     .replace("%sec", String.valueOf(sec)));
         }
 
-        if (s.equals("bank_interest_money")) {
-            return String.valueOf(Data.getBalance() * Bank.getDouble("Bank.Interest.Percent"));
+        if (s.equals("bank_interest_amount")) {
+            return String.valueOf(data.getBalance() * Bank.getDouble("Bank.Interest.Percent"));
+        }
+
+        if (s.startsWith("bank_deposit_")) {
+            int percentage;
+
+            percentage = Integer.parseInt(s.replace("bank_deposit_", ""));
+
+            if (Main.eco.getBalance(p) >= 0) {
+                return String.valueOf(Decimal.format((percentage * Main.eco.getBalance(p)) / 100));
+            }
+        }
+
+        if (s.startsWith("bank_withdraw_")) {
+            int percentage;
+
+            percentage = Integer.parseInt(s.replace("bank_withdraw_", ""));
+
+            if (data.getBalance() >= 0) {
+                return String.valueOf(Decimal.format((percentage * data.getBalance()) / 100));
+            }
         }
 
         return s;
     }
-
 }

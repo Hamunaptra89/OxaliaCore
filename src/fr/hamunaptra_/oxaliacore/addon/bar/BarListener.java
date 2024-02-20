@@ -20,9 +20,8 @@ public class BarListener implements Listener {
 
     @EventHandler
     public void onDrink(PlayerItemConsumeEvent e) {
-        ItemStack i = e.getItem();
         Player p = e.getPlayer();
-        Color Color = new Color(p);
+        ItemStack i = e.getItem();
         String iName = i.getItemMeta().getDisplayName();
 
         Random r = new Random();

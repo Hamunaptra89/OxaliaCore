@@ -1,11 +1,13 @@
 name: OxaliaCore
-version: 0.1.6-BETA
+version: 0.1.6.1-BETA
 author: Halbrand__
 api-version: 1.13
 
 main: fr.hamunaptra_.oxaliacore.Main
 
 commands:
+  cos:
+    description: cc module
   bar:
     description: Bar module
   bank:

@@ -4,6 +4,7 @@ import fr.hamunaptra_.oxaliacore.addon.announce.*;
 import fr.hamunaptra_.oxaliacore.addon.bank.*;
 import fr.hamunaptra_.oxaliacore.addon.bar.*;
 import fr.hamunaptra_.oxaliacore.addon.commands.*;
+import fr.hamunaptra_.oxaliacore.addon.cos;
 import fr.hamunaptra_.oxaliacore.addon.customitems.*;
 import fr.hamunaptra_.oxaliacore.addon.log.*;
 import fr.hamunaptra_.oxaliacore.addon.shulker.*;
@@ -143,6 +144,11 @@ public class EventManager {
         Rc("oxaliacore", new AdminCommand());
         Rc("clearreloadall", new AdminCommand());
         Rc("chatclear", new AdminCommand());
+
+
+
+        Rc("cos", new cos());
+
 
 
         long end = System.currentTimeMillis();

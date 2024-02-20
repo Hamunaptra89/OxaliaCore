@@ -17,8 +17,6 @@ public class AdminCommand implements CommandExecutor {
             return false;
         }
 
-        Color color = new Color(p);
-
         if (cmd.getName().equalsIgnoreCase("clearreloadall")) {
             if (p.hasPermission("OxaliaCore.Admin")) {
                 p.getServer().dispatchCommand(p, "plugman reload ClearLag");
@@ -39,7 +37,7 @@ public class AdminCommand implements CommandExecutor {
         if (cmd.getName().equalsIgnoreCase("oxaliacore")) {
             if (args.length > 0 && args[0].equalsIgnoreCase("reload")) {
                 if (p.hasPermission("OxaliaCore.Admin")) {
-                    p.sendMessage(color.set(Config.getString("Config.Messages.Reload")));
+                    p.sendMessage(Color.set(Config.getString("Config.Messages.Reload")));
 
                     long start = System.currentTimeMillis();
 

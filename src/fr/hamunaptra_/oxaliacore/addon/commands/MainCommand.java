@@ -23,30 +23,28 @@ public class MainCommand implements CommandExecutor {
             return false;
         }
 
-        Color color = new Color(p);
-
         if (cmd.getName().equalsIgnoreCase("discord")) {
-            color.formatted("Config.Commands.Discord");
+            Color.formatted("Config.Commands.Discord");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("link")) {
-            color.formatted("Config.Commands.Link");
+            Color.formatted("Config.Commands.Link");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("site")) {
-            color.formatted("Config.Commands.Site");
+            Color.formatted("Config.Commands.Site");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("store")) {
-            color.formatted("Config.Commands.Store");
+            Color.formatted("Config.Commands.Store");
             return false;
         }
 
         if (cmd.getName().equalsIgnoreCase("votes")) {
-            color.formatted("Config.Commands.Vote");
+            Color.formatted("Config.Commands.Vote");
             return false;
         }
 
@@ -70,9 +68,9 @@ public class MainCommand implements CommandExecutor {
             }
 
             if (ifissmelting) {
-                p.sendMessage(color.set(Config.getString("Config.Commands.Furnace.Success")));
+                p.sendMessage(Color.set(Config.getString("Config.Commands.Furnace.Success")));
             } else {
-                p.sendMessage(color.set(Config.getString("Config.Commands.Furnace.NoMaterial")));
+                p.sendMessage(Color.set(Config.getString("Config.Commands.Furnace.NoMaterial")));
             }
 
             return true;

@@ -18,8 +18,6 @@ public class LogCommand implements CommandExecutor {
             return false;
         }
 
-        Color color = new Color(p);
-
         if (!p.hasPermission("OxaliaCore.Admin")) {
             p.sendMessage("Vous n'avez pas la permission.");
             return true;
@@ -57,7 +55,7 @@ public class LogCommand implements CommandExecutor {
             int startIndex = (page - 1) * 15;
             int endIndex = Math.min(startIndex + 15, logData.size());
 
-            p.sendMessage(color.set("&8&m                         "
+            p.sendMessage(Color.set("&8&m                         "
                     + "&8(&e&l" + playerName + " " + page + "&7&l/&e&l" + maxPage
                     + "&r&8)&8&m                         "));
 
@@ -65,7 +63,7 @@ public class LogCommand implements CommandExecutor {
                 p.sendMessage(logData.get(i));
             }
 
-            p.sendMessage(color.set("&8&m                                                                           "));
+            p.sendMessage(Color.set("&8&m                                                                           "));
             return true;
         }
 
@@ -83,7 +81,7 @@ public class LogCommand implements CommandExecutor {
             int startIndex = (page - 1) * 15;
             int endIndex = Math.min(startIndex + 15, logData.size());
 
-            p.sendMessage(color.set("&8&m                              "
+            p.sendMessage(Color.set("&8&m                              "
                     + "&8(&a&lLog &e&l" + page + "&7&l/&e&l" + (int) Math.ceil((double) logData.size() / 15)
                     + "&r&8)&8&m                              "));
 
@@ -91,7 +89,7 @@ public class LogCommand implements CommandExecutor {
                 p.sendMessage(logData.get(i));
             }
 
-            p.sendMessage(color.set("&8&m                                                                           "));
+            p.sendMessage(Color.set("&8&m                                                                           "));
         }
 
         return true;

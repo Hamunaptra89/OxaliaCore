@@ -18,7 +18,6 @@ public class BankInterest {
                 if (Bank.getBoolean(path + "Enable")) {
                     for (Player p : Bukkit.getOnlinePlayers()) {
                         OxaliaData data = new OxaliaData(p);
-                        Color color = new Color(p);
 
                         if (data.getInterestTime() > 0) {
                             data.removeInterestTime(1);
@@ -34,7 +33,7 @@ public class BankInterest {
                                 data.setInterestTime(Bank.getInt(path + "Time"));
                                 double amount = data.getBalance() * Bank.getDouble(path + "Percent");
                                 data.deposit(amount);
-                                p.sendMessage(color.set(Bank.getString(path + "Message.Get")));
+                                p.sendMessage(Color.set(Bank.getString(path + "Message.Get")));
                                 return;
                             }
                         }

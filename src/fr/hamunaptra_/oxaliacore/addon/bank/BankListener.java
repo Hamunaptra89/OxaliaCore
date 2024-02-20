@@ -32,7 +32,6 @@ public class BankListener implements Listener {
     @EventHandler
     public void onClick(InventoryClickEvent e) {
         Player p = (Player) e.getWhoClicked();
-        Color Color = new Color(p);
         OxaliaData Data = new OxaliaData(p);
 
         if (e.getCurrentItem() == null) return;
@@ -76,10 +75,14 @@ public class BankListener implements Listener {
 
 
         } else if (name.equals(Color.set(Bank.getString(gui + "Deposit.Item.SpecialAmount.Name")))) {
-            if (!DepositNumberMap.getOrDefault(p, false)) {
-                p.closeInventory();
-                DepositNumberMap.put(p, true);
-                p.sendMessage(Color.set(Bank.getString(msg + "Deposit.SpecialAmount")));
+            if (Main.eco.getBalance(p) <= 0) {
+                p.sendMessage(Color.set(Bank.getString(msg + "NoMoney")));
+            } else {
+                if (!DepositNumberMap.getOrDefault(p, false)) {
+                    p.closeInventory();
+                    DepositNumberMap.put(p, true);
+                    p.sendMessage(Color.set(Bank.getString(msg + "Deposit.SpecialAmount")));
+                }
             }
 
         } else if (name.equals(Color.set(Bank.getString(gui + "Withdraw.Item.SpecialAmount.Name")))) {
@@ -98,7 +101,6 @@ public class BankListener implements Listener {
     @EventHandler
     public void PlayerDeath(PlayerDeathEvent e) {
         Player p = e.getEntity();
-        Color Color = new Color(p);
         OxaliaData Data = new OxaliaData(p);
 
         if (Bank.getBoolean("Bank.Death.Enable")) {
@@ -111,7 +113,6 @@ public class BankListener implements Listener {
     @EventHandler
     public void onPlayerChat(AsyncPlayerChatEvent e) {
         Player p = e.getPlayer();
-        Color Color = new Color(p);
         OxaliaData Data = new OxaliaData(p);
         String message = e.getMessage();
 
@@ -191,7 +192,6 @@ public class BankListener implements Listener {
     public void onInventoryOpen(InventoryOpenEvent e) {
         if (e.getPlayer() instanceof Player p) {
             String Gui = e.getView().getTitle();
-            Color Color = new Color(p);
 
             if (Gui.equals(Color.set(Bank.getString(gui + "Main.Inv.Name"))) ||
                     Gui.equals(Color.set(Bank.getString(gui + "Deposit.Inv.Name"))) ||
@@ -205,7 +205,6 @@ public class BankListener implements Listener {
         BukkitTask task = new BukkitRunnable() {
             @Override
             public void run() {
-                Color Color = new Color(p);
 
                 if (Gui.equals(Color.set(Bank.getString(gui + "Main.Inv.Name")))) {
                     BankGuis.BankMain(p);
@@ -223,7 +222,6 @@ public class BankListener implements Listener {
     @EventHandler
     public void onInventoryClose(InventoryCloseEvent e) {
         if (e.getPlayer() instanceof Player p) {
-            Color Color = new Color(p);
 
             if (e.getView().getTitle().equals(Color.set(Bank.getString(gui + "Main.Inv.Name"))) || e.getView().getTitle().equals(Color.set(Bank.getString(gui + "Deposit.Inv.Name"))) || e.getView().getTitle().equals(Color.set(Bank.getString(gui + "Withdraw.Inv.Name"))) && UpdateGui.containsKey(p)) {
                 BukkitTask task = UpdateGui.get(p);

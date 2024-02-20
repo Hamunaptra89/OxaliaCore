@@ -21,7 +21,6 @@ public class BankCommand implements CommandExecutor {
             return false;
         }
 
-        Color color = new Color(p);
         OxaliaData data = new OxaliaData(p);
 
         if (args.length < 1) {
@@ -30,22 +29,22 @@ public class BankCommand implements CommandExecutor {
         }
 
         if (args[0].equalsIgnoreCase("help")) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "Help")));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Help")));
         } else if (args[0].equalsIgnoreCase("balance")) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "Balance").replace("%amount%", Decimal.format(data.getBalance()))));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Balance").replace("%amount%", Decimal.format(data.getBalance()))));
         } else if (args[0].equalsIgnoreCase("deposit")) {
-            deposit(p, color, data, args);
+            deposit(p, data, args);
         } else if (args[0].equalsIgnoreCase("withdraw")) {
-            withdraw(p, color, data, args);
+            withdraw(p,data, args);
         } else if (args[0].equalsIgnoreCase("interest")) {
-            interest(p, color, data);
+            interest(p, data);
         }
         return true;
     }
 
-    private void deposit(Player p, Color color, OxaliaData data, String[] args) {
+    private void deposit(Player p, OxaliaData data, String[] args) {
         if (args.length < 2) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "Deposit.Help")));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Deposit.Help")));
             return;
         }
 
@@ -57,21 +56,21 @@ public class BankCommand implements CommandExecutor {
                 EconomyResponse response = Main.eco.withdrawPlayer(p, amount);
                 if (response.transactionSuccess()) {
                     data.deposit(amount);
-                    p.sendMessage(color.set(Bank.getString(BANK_KEY + "Deposit.Success").replace("%amount%", Decimal.format(amount))));
+                    p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Deposit.Success").replace("%amount%", Decimal.format(amount))));
                 } else {
-                    p.sendMessage(color.set(Bank.getString(BANK_KEY + "NoMoney")));
+                    p.sendMessage(Color.set(Bank.getString(BANK_KEY + "NoMoney")));
                 }
             } else {
-                p.sendMessage(color.set(Bank.getString(BANK_KEY + "NoMoney")));
+                p.sendMessage(Color.set(Bank.getString(BANK_KEY + "NoMoney")));
             }
         } catch (NumberFormatException e) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "InvalidNumber")));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "InvalidNumber")));
         }
     }
 
-    private void withdraw(Player p, Color color, OxaliaData data, String[] args) {
+    private void withdraw(Player p, OxaliaData data, String[] args) {
         if (args.length < 2) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "Withdraw.Help")));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Withdraw.Help")));
             return;
         }
 
@@ -83,33 +82,34 @@ public class BankCommand implements CommandExecutor {
                 EconomyResponse response = Main.eco.depositPlayer(p, amount);
 
                 if (response.transactionSuccess()) {
-                    p.sendMessage(color.set(Bank.getString(BANK_KEY + "Withdraw.Success").replace("%amount%", Decimal.format(amount))));
+                    p.sendMessage(Color.set(Bank.getString(BANK_KEY + "Withdraw.Success").replace("%amount%", Decimal.format(amount))));
                 } else {
-                    p.sendMessage(color.set(Bank.getString(BANK_KEY + "NoMoney")));
+                    p.sendMessage(Color.set(Bank.getString(BANK_KEY + "NoMoney")));
                 }
             } else {
-                p.sendMessage(color.set(Bank.getString(BANK_KEY + "NoMoney")));
+                p.sendMessage(Color.set(Bank.getString(BANK_KEY + "NoMoney")));
             }
         } catch (NumberFormatException e) {
-            p.sendMessage(color.set(Bank.getString(BANK_KEY + "InvalidNumber")));
+            p.sendMessage(Color.set(Bank.getString(BANK_KEY + "InvalidNumber")));
         }
     }
 
-    private void interest(Player p, Color color, OxaliaData data) {
+    private void interest(Player p, OxaliaData data) {
         if (Bank.getBoolean(INTEREST_KEY + "Enable")) {
             if (data.getBalance() >= Bank.getInt(INTEREST_KEY + "Minimum")) {
-                p.sendMessage(color.set(Bank.getString(INTEREST_KEY + "Message.Time")));
+                p.sendMessage(Color.set(Bank.getString(INTEREST_KEY + "Message.Time")));
             } else {
-                p.sendMessage(color.set(Bank.getString(INTEREST_KEY + "Message.NeedMoreMoney")));
+                p.sendMessage(Color.set(Bank.getString(INTEREST_KEY + "Message.NeedMoreMoney")));
             }
         } else {
-            p.sendMessage(color.set(Bank.getString(INTEREST_KEY + "Message.Disable")));
+            p.sendMessage(Color.set(Bank.getString(INTEREST_KEY + "Message.Disable")));
         }
     }
 
     private double parseDepositAmount(String amount, Player p) {
         if (amount.endsWith("%")) {
-            return Main.eco.getBalance(p) * Double.parseDouble(amount.replace("%", "")) / 100.0;
+            double bal = Main.eco.getBalance(p);
+            return bal * Double.parseDouble(amount.replace("%", "")) / 100.0;
         } else {
             try {
                 double parsedAmount = Double.parseDouble(amount);
@@ -122,8 +122,8 @@ public class BankCommand implements CommandExecutor {
 
     private double parseWithdrawAmount(String amount, OxaliaData data) {
         if (amount.endsWith("%")) {
-            double bankbalance = data.getBalance();
-            return bankbalance * Double.parseDouble(amount.replace("%", "")) / 100.0;
+            double bal = data.getBalance();
+            return bal * Double.parseDouble(amount.replace("%", "")) / 100.0;
         } else {
             try {
                 double parsedAmount = Double.parseDouble(amount);

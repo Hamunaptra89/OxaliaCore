@@ -28,11 +28,10 @@ public class BankGuis implements Listener {
     }
 
     public static void BankGui(Player p, String guiType) {
-        Color color = new Color(p);
         String guiKey = BANK_KEY + guiType;
 
         int invSlot = Bank.getInt(guiKey + ".Inv.Slot");
-        String invName = color.set(Bank.getString(guiKey + ".Inv.Name"));
+        String invName = Color.set(Bank.getString(guiKey + ".Inv.Name"));
         Inventory inv = Bukkit.createInventory(null, invSlot, invName);
 
         ConfigurationSection s = Bank.getConfigurationSection(guiKey + ".Item");
@@ -45,10 +44,10 @@ public class BankGuis implements Listener {
                 if (slot >= 0 && slot < invSlot) {
                     Material material = Material.getMaterial(Bank.getString(path + ".Material"));
                     int amount = Bank.getInt(path + ".Amount");
-                    String itemName = color.set(Bank.getString(path + ".Name"));
+                    String itemName = Color.set(Bank.getString(path + ".Name"));
                     Items item = new Items(material, amount)
                             .setName(itemName)
-                            .setLore(color.set(Bank.getStringList(path + ".Lore")));
+                            .setLore(Color.set(Bank.getStringList(path + ".Lore")));
                     inv.setItem(slot, item.im());
                 }
             }

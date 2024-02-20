@@ -11,17 +11,17 @@ import java.util.*;
 
 public class Color {
 
-    private final Player p;
+    private static Player p;
 
     public Color(Player p) {
-        this.p = p;
+        Color.p = p;
     }
 
-    public String set(String str) {
+    public static String set(String str) {
         return PlaceholderAPI.setPlaceholders(p, ChatColor.translateAlternateColorCodes('&', str));
     }
 
-    public List<String> set(List<String> s) {
+    public static List<String> set(List<String> s) {
         List<String> lores = new ArrayList<>();
 
         for (String str : s) {
@@ -31,7 +31,7 @@ public class Color {
         return lores;
     }
 
-    public void formatted(String path) {
+    public static void formatted(String path) {
         String s = Config.getString(path);
         if (s != null) {
             String[] lignes = s.split("\n");
